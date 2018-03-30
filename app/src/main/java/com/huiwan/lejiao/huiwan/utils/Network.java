@@ -34,8 +34,8 @@ public class Network {
 
     public void connectnet(String date){
         OkHttpClient client = new OkHttpClient();//创建OkHttpClient对象。
-        MediaType JSON = MediaType.parse("application/x-www-from-urlencoded; charset=utf-8");//数据类型为json格式，
-        String jsonStr = "type=hw.user.list&page=1&pagesize=20&sign=C97A81FE48CE5BDA4585904661C4021B";//json数据.
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");//数据类型为json格式，
+        String jsonStr = date;//json数据.
         Log.d("5555","JSON数据"+jsonStr);
         RequestBody body = RequestBody.create(JSON, jsonStr);
 

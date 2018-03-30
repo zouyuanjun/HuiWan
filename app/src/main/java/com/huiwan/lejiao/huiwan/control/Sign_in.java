@@ -35,18 +35,17 @@ public class Sign_in {
         encryption_password= MD5utils.encode(password);
         Log.d("5555",encryption_password);
         Network network=Network.getnetwork();
-        String a="'{\"username\":hello,b:word}'";
-        obj o=new obj("hw.user.list","1","20","C97A81FE48CE5BDA4585904661C4021B");
+        String appkey="fe3697d98c691f6bd027ace47596e2b6";
+        String type="hw.user.list";
+        String page="2";
+        String pagesize="50";
+        String sign=MD5utils.encode("250"+type+appkey).toUpperCase();
+        Log.d("555","SIGN"+sign);
+        obj o=new obj(type,page,pagesize,sign);
         Gson gson=new Gson();
-        password=gson.toJson(o);
-        JSONObject json = new JSONObject();//将java对象转换为json对象
-        json.put("type","hw.user.list");
-        json.put("page","1");
-        json.put("pagesize","20");
-        json.put("sign","C97A81FE48CE5BDA4585904661C4021B");
-        String str = json.toString();//将json对象转换为字符串
+        password=gson.toJson(o);  //将json对象转换为字符串
 
-        network.connectnet("{\"type\":\"hw.user.list\",\"page\":\"1\",\"pagesize\":\"20\",\"sign\":\"C97A81FE48CE5BDA4585904661C4021B\"}");
+        network.connectnet(password);
         Intent intent=new Intent(Sign_in_Activity.getactivity(),MainActivity.class);
         Sign_in_Activity.getactivity().startActivity(intent);
     }
