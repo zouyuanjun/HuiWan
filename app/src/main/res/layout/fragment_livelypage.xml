@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
@@ -8,93 +10,186 @@
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="115dp"
+            android:orientation="horizontal"
+            android:background="@color/backgroundwite">
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_weight="1">
+                android:layout_height="115dp"
+                android:layout_weight="1"
+                >
 
                 <TextView
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/heiseziti"
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="56dp"
-                    android:text="今日人数" />
+                    android:layout_marginTop="18dp"
+                    android:textSize="13sp"
+                    android:text="团队人数" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
+                <TextView
+                    android:textSize="22sp"
+                    android:textColor="#f0780a"
+                    android:text="5"
+                    android:gravity="center"
+                    android:layout_width="53dp"
+                    android:layout_height="53dp"
+                    android:layout_below="@id/textView3"
+                    android:layout_marginTop="12dp"
                     android:layout_alignStart="@+id/textView3"
-                    android:background="@mipmap/ic_launcher" />
+                    android:background="@drawable/yuanfef0d2" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
                 <TextView
-                    android:id="@+id/text"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/heiseziti"
+                    android:id="@+id/textView13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="今日目标"/>
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="18dp"
+                    android:textSize="13sp"
+                    android:text="新进人数" />
 
-                <ImageView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text"
-                    android:layout_toEndOf="@+id/text"
-                    android:background="@mipmap/ic_launcher" />
+                <TextView
+                    android:layout_centerHorizontal="true"
+                    android:textSize="22sp"
+                    android:textColor="#f0780a"
+                    android:text="5"
+                    android:gravity="center"
+                    android:layout_width="53dp"
+                    android:layout_height="53dp"
+                    android:layout_below="@id/textView13"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/yuanffe6dc" />
             </RelativeLayout>
         </LinearLayout>
         <LinearLayout
-            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="115dp"
+            android:orientation="horizontal"
+            android:background="@color/backgroundwite">
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                >
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/heiseziti"
+                    android:id="@+id/textView113"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="56dp"
-                    android:text="今日人数" />
+                    android:layout_marginTop="18dp"
+                    android:textSize="13sp"
+                    android:text="今日使用惠玩人数" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignStart="@+id/textView4"
-                    android:background="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:layout_centerHorizontal="true"
+                    android:textSize="22sp"
+                    android:textColor="#f0780a"
+                    android:text="12"
+                    android:gravity="center"
+                    android:layout_width="53dp"
+                    android:layout_height="53dp"
+                    android:layout_below="@id/textView113"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/yuanfef0d2" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
                 <TextView
-                    android:id="@+id/text1"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/heiseziti"
+                    android:id="@+id/textView123"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="今日目标"/>
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="18dp"
+                    android:textSize="13sp"
+                    android:text="本月使用惠玩人数" />
 
-                <ImageView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text1"
-                    android:layout_toEndOf="@+id/text1"
-                    android:background="@mipmap/ic_launcher" />
+                <TextView
+                    android:layout_centerHorizontal="true"
+                    android:textSize="22sp"
+                    android:textColor="#f02314"
+                    android:text="50"
+                    android:gravity="center"
+                    android:layout_width="53dp"
+                    android:layout_height="53dp"
+                    android:layout_below="@id/textView123"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/yuanffe6dc" />
             </RelativeLayout>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="16dp">
+            
+        </LinearLayout>
+        <LinearLayout
+            android:paddingLeft="16dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@color/backgroundwite"
+            >
 
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:id="@+id/imageView6"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                app:srcCompat="@drawable/yuanffe6dc" />
+
+            <TextView
+                android:paddingLeft="5dp"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="11sp"
+                android:text="活跃度:20" />
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:background="@color/colorPrimary"
+                android:layout_width="22dp"
+                android:layout_height="2dp" />
+            <TextView
+                android:textColor="@color/colorPrimary"
+                android:paddingRight="16dp"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:text="使用人数" />
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:background="#f0780a"
+                android:layout_width="22dp"
+                android:layout_height="2dp" />
+            <TextView
+                android:textColor="#f0780a"
+                android:paddingRight="16dp"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/textView115"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:text="新进人数" />
+        </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

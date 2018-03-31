@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -15,18 +14,17 @@ import com.huiwan.lejiao.huiwan.R;
 
 import java.util.ArrayList;
 
-public class Studentinfo_list_Adapter extends BaseAdapter{
-
+public class Chakanxiaji_Adapter extends BaseAdapter {
     TextView tv_name;
     TextView tv_shouji;
     TextView tv_weixin;
     TextView tv_keyongma;
-    Button bt_zhuangma;
+
     SimpleDraweeView im_photo;
 
     ArrayList<PersonalinfoBean> arrayList=new ArrayList<>();
 
-    public Studentinfo_list_Adapter(ArrayList<PersonalinfoBean> arrayList) {
+    public Chakanxiaji_Adapter(ArrayList<PersonalinfoBean> arrayList) {
         this.arrayList = arrayList;
     }
 
@@ -47,13 +45,12 @@ public class Studentinfo_list_Adapter extends BaseAdapter{
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        View itemview= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_student_info,null);
-        tv_name=itemview.findViewById(R.id.tv_itemname);
-        tv_shouji=itemview.findViewById(R.id.tv_itemphonenum);
-        tv_weixin=itemview.findViewById(R.id.tv_itemweixin);
-        tv_keyongma=itemview.findViewById(R.id.tv_itemkeyongma);
-        bt_zhuangma=itemview.findViewById(R.id.bt_itemzhuangma);
-        im_photo=itemview.findViewById(R.id.im_itemphoto);
+        View itemview= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_chakanxiaji,null);
+        tv_name=itemview.findViewById(R.id.tv_xjitemname);
+        tv_shouji=itemview.findViewById(R.id.tv_xjitemphonenum);
+        tv_weixin=itemview.findViewById(R.id.tv_xjitemweixin);
+        tv_keyongma=itemview.findViewById(R.id.tv_xjitemkeyongma);
+        im_photo=itemview.findViewById(R.id.im_xjitemphoto);
 
         tv_name.setText(arrayList.get(i).getName());
         tv_shouji.setText(arrayList.get(i).getPhonenum());

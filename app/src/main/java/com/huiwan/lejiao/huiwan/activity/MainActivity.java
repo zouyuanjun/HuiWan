@@ -1,7 +1,8 @@
 package com.huiwan.lejiao.huiwan.activity;
 
+import android.app.Activity;
 import android.content.Context;
-import android.media.Image;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -13,14 +14,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.google.gson.Gson;
+import com.huiwan.lejiao.huiwan.DataBean.UserdataBean;
 import com.huiwan.lejiao.huiwan.R;
-import com.huiwan.lejiao.huiwan.control.Sign_in;
 import com.huiwan.lejiao.huiwan.fragment.Homepage;
 import com.huiwan.lejiao.huiwan.fragment.Livelypage;
 import com.huiwan.lejiao.huiwan.fragment.Myselfpage;
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     TextView tv_toobar_text;
     private ViewPager viewPager;
+    Toolbar toolbar;
 
     private ViewPagerAdapter viewPagerAdapter;
     private List<Fragment> fragmentlist=new ArrayList<>();
@@ -58,12 +59,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.d("555", "Ma"+GetSysdata.getsysdata().datastring());
         setContentView(R.layout.activity_main);
         context=this;
-        Toolbar toolbar =  findViewById(R.id.toolbar);
+        toolbar =findViewById(R.id.toolbar);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         initview();
 
     }
-
 
     private void  initview(){
         fragmentlist.add(new Homepage());
@@ -88,11 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager(),fragmentlist);
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setCurrentItem(0);
-
-
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -144,4 +141,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
     }
+
 }

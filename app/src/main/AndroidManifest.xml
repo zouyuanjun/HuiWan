@@ -20,6 +20,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.CheakcodeActivity"></activity>
+        <activity android:name=".activity.Setting_user_info_Activity"></activity>
+        <activity android:name=".activity.Xueyuan_info_Activity"></activity>
+        <activity android:name=".activity.Chakanxiaji_Activity"></activity>
+        <activity android:name=".activity.Xiaji_info_Activity"></activity>
     </application>
 
 </manifest>

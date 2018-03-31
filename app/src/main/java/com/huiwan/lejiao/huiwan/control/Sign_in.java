@@ -1,11 +1,15 @@
 package com.huiwan.lejiao.huiwan.control;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.huiwan.lejiao.huiwan.DataBean.UserdataBean;
+import com.huiwan.lejiao.huiwan.R;
 import com.huiwan.lejiao.huiwan.activity.MainActivity;
 import com.huiwan.lejiao.huiwan.activity.Sign_in_Activity;
 import com.huiwan.lejiao.huiwan.obj;
@@ -43,7 +47,7 @@ public class Sign_in {
         obj o=new obj(type,page,pagesize,sign);
         Gson gson=new Gson();
         password=gson.toJson(o);  //将json对象转换为字符串
-        network.connectnet(password,handler);
+        network.connectnet(password,url,handler);
     }
         Handler handler=new Handler() {
             @Override
@@ -66,15 +70,34 @@ public class Sign_in {
     }
 
     public void isture(String result){
+        //如果是第一次登陆，跳到信息设置界面
+        //if(result=="1")
+        //登陆成功则跳转到主页
         if (true){
+            keepdata();
             Intent intent=new Intent(Sign_in_Activity.getactivity(),MainActivity.class);
             Sign_in_Activity.getactivity().startActivity(intent);
             signresult.signsuccessful(result);
-
         }else {
-
             signresult.signfail("fail");
             Log.d("5555","登陆失败");
         }
+    }
+    public void keepdata(){
+
+        UserdataBean userdataBean=new UserdataBean("uid_5456","王麻子","l1","15","6","12","25");
+        Gson gson=new Gson();
+        String user=gson.toJson(userdataBean);  //将json对象转换为字符串
+        SharedPreferences sp = Sign_in_Activity.getactivity().getSharedPreferences("SPuser", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor=sp.edit();
+        editor.putString("SIGN",user);
+        editor.commit();
+        StaticValue.id=userdataBean.getId();
+        StaticValue.benyuemubiao=userdataBean.getBenyuemubiao();
+        StaticValue.benyuerenshu=userdataBean.getBenyuerenshu();
+        StaticValue.jinrimubiao=userdataBean.getJinrimubiao();
+        StaticValue.jinrirenshu=userdataBean.getJinrirenshu();
+        StaticValue.name=userdataBean.getName();
+        StaticValue.lv=userdataBean.getLv();
     }
 }

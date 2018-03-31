@@ -28,16 +28,13 @@ public class Network {
     private Network() {
 
     }
-    public void connectnet(String date , final android.os.Handler handler){
-        Log.d("55555","network中的发起请求的"+Thread.currentThread().getId());
+    public void connectnet(String date , String url,final android.os.Handler handler){
         OkHttpClient client = new OkHttpClient();//创建OkHttpClient对象。
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");//数据类型为json格式，
         String jsonStr = date;//json数据.
-
         RequestBody body = RequestBody.create(JSON, jsonStr);
-
         Request request = new Request.Builder()
-                .url("https://huiwan.hz.taeapp.com/api/index.php?m=home&c=tapi&a=index")
+                .url(url)
                 .post(body)
                 .build();
         client.newCall(request).enqueue(new Callback() {
@@ -48,7 +45,6 @@ public class Network {
             }
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Log.d("55555","networ中返回成功的"+Thread.currentThread().getId());
                Message message=new Message();
                String s=response.body().string();
                message.obj=s;

@@ -9,115 +9,172 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/colorAccent">
+        android:background="@color/background">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="280dp"
             android:background="@color/background"
             >
             <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:id="@+id/im_hp_dengji"
+                android:layout_width="145dp"
+                android:layout_height="145dp"
                 android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="36dp"
                 android:background="@color/colorPrimary" />
             <TextView
-                android:id="@+id/textView2"
+                android:textSize="13sp"
+                android:textColor="@color/heiseziti"
+                android:id="@+id/tv_hp_dangqiandengji"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="68dp"
-                android:text="当前等级" />
+                android:layout_marginTop="201dp"
+                android:text="您当前等级为" />
+            <TextView
+                android:textSize="13sp"
+                android:textColor="@color/heiseziti"
+                android:id="@+id/tv_hp_xiagedengji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/tv_hp_dangqiandengji"
+                android:layout_marginTop="12dp"
+                android:text="在邀请5人可成为" />
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="115dp"
+            android:orientation="horizontal"
+            android:background="@color/backgroundwite">
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_weight="1">
+                android:layout_height="1150dp"
+                android:layout_weight="1"
+                >
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:textColor="@color/heiseziti"
+                    android:id="@+id/textView1123"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="56dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginStart="72dp"
+                    android:textSize="13sp"
                     android:text="今日人数" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignStart="@+id/textView3"
-                    android:background="@mipmap/ic_launcher" />
+                <TextView
+                    android:id="@+id/tv_homepage_jinrirenshu"
+                    android:textSize="22sp"
+                    android:textColor="#f0780a"
+                    android:text="5"
+                    android:gravity="center"
+                    android:layout_width="53dp"
+                    android:layout_height="53dp"
+                    android:layout_below="@id/textView1123"
+                    android:layout_marginTop="12dp"
+                    android:layout_alignStart="@+id/textView1123"
+                    android:background="@drawable/yuanfef0d2" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
                 <TextView
-                    android:id="@+id/text"
+                    android:textColor="@color/heiseziti"
+                    android:id="@+id/textView13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="今日目标"/>
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginStart="72dp"
+                    android:textSize="13sp"
+                    android:text="今日目标" />
 
-                <ImageView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text"
-                    android:layout_toEndOf="@+id/text"
-                    android:background="@mipmap/ic_launcher" />
+                <TextView
+                    android:id="@+id/tv_homepage_jirimubiao"
+                    android:textSize="22sp"
+                    android:textColor="#f0780a"
+                    android:text="15"
+                    android:gravity="center"
+                    android:layout_width="53dp"
+                    android:layout_height="53dp"
+                    android:layout_below="@id/textView13"
+                    android:layout_marginTop="12dp"
+                    android:layout_alignStart="@+id/textView13"
+                    android:background="@drawable/yuanffe6dc" />
             </RelativeLayout>
         </LinearLayout>
         <LinearLayout
-            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="115dp"
+            android:orientation="horizontal"
+            android:background="@color/backgroundwite">
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                >
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:textColor="@color/heiseziti"
+                    android:id="@+id/textView113"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="56dp"
-                    android:text="今日人数" />
+                    android:layout_marginTop="18dp"
+                    android:layout_marginStart="72dp"
+                    android:textSize="13sp"
+                    android:text="本月人数" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignStart="@+id/textView4"
-                    android:background="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/tv_hp_benyuerenshu"
+                    android:textSize="22sp"
+                    android:textColor="#f0780a"
+                    android:text="12"
+                    android:gravity="center"
+                    android:layout_width="53dp"
+                    android:layout_height="53dp"
+                    android:layout_below="@id/textView113"
+                    android:layout_marginTop="12dp"
+                    android:layout_alignStart="@+id/textView113"
+                    android:background="@drawable/yuanfef0d2" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
                 <TextView
-                    android:id="@+id/text1"
+                    android:textColor="@color/heiseziti"
+                    android:id="@+id/textView123"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="今日目标"/>
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginStart="72dp"
+                    android:textSize="13sp"
+                    android:text="本月目标" />
 
-                <ImageView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text1"
-                    android:layout_toEndOf="@+id/text1"
-                    android:background="@mipmap/ic_launcher" />
+                <TextView
+                    android:id="@+id/tv_hp_benyuemubiao"
+                    android:textSize="22sp"
+                    android:textColor="#f02314"
+                    android:text="50"
+                    android:gravity="center"
+                    android:layout_width="53dp"
+                    android:layout_height="53dp"
+                    android:layout_below="@id/textView123"
+                    android:layout_marginTop="12dp"
+                    android:layout_alignStart="@+id/textView123"
+                    android:background="@drawable/yuanffe6dc" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

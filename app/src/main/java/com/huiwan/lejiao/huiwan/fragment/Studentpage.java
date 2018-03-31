@@ -1,17 +1,22 @@
 package com.huiwan.lejiao.huiwan.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.huiwan.lejiao.huiwan.DataBean.PersonalinfoBean;
 import com.huiwan.lejiao.huiwan.R;
+import com.huiwan.lejiao.huiwan.activity.Xueyuan_info_Activity;
 import com.huiwan.lejiao.huiwan.viewadapter.Studentinfo_list_Adapter;
 
 import java.util.ArrayList;
@@ -21,7 +26,7 @@ import java.util.List;
  * Created by zou on 2018/3/28.
  */
 
-public class Studentpage extends Fragment {
+public class Studentpage extends Fragment implements AdapterView.OnItemClickListener{
     ImageView im_sjphoto;       //上级头像
     ImageView im_sjduanwei;     //上级段位图
 
@@ -56,5 +61,12 @@ public class Studentpage extends Fragment {
         arrayList.add(personalinfoBean);
         Studentinfo_list_Adapter adapter=new Studentinfo_list_Adapter(arrayList);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(this);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent=new Intent(getActivity(), Xueyuan_info_Activity.class);
+        startActivity(intent);
     }
 }

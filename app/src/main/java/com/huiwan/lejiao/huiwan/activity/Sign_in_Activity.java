@@ -60,15 +60,16 @@ public class Sign_in_Activity extends AppCompatActivity {
         username=ed_username.getText().toString();
         password=ed_password.getText().toString();
         Sign_in sign_in=new Sign_in(username,password);
+        //登陆成功则销毁登陆界面
         sign_in.setsignlistener(new Sign_in.Signresult() {
             @Override
             public void signsuccessful(String t) {
                 finish();
-                Log.d("5555","Sign已结束");
             }
-
+            //登陆失败弹窗提示
             @Override
             public void signfail(String t) {
+
 
             }
         });

@@ -5,96 +5,108 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
+        android:background="@color/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="20dp">
-
+            android:padding="16dp">
             <RelativeLayout
+                android:background="@color/backgroundwite"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
                 <TextView
-                    android:id="@+id/keshencheng2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="35dp"
-                    android:text="可生成码数" />
-
-                <Button
-                    android:id="@+id/bt_activate_code"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:text="激活生成码" />
-
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    app:srcCompat="@drawable/shape_corner" />
-
-                <TextView
-                    android:id="@+id/tv_keshencheng"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:text="5" />
-            </RelativeLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:padding="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
+                    android:textColor="@color/heiseziti"
                     android:id="@+id/textView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="35dp"
-                    android:text="已生成码数" />
-
+                    android:layout_marginTop="30dp"
+                    android:text="可生成码数" />
+                <TextView
+                    android:textColor="#f0780a"
+                    android:textSize="28sp"
+                    android:background="@drawable/yuanffe6dc"
+                    android:id="@+id/tv_keshencheng"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="5" />
+                <LinearLayout
+                    android:background="#d8d8da"
+                    android:layout_above="@+id/bt_activate_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp">
+                </LinearLayout>
                 <Button
-                    android:id="@+id/bt_query_code"
+                    android:textColor="#f0780a"
+                    android:textSize="16sp"
+                    android:background="@color/backgroundwite"
+                    android:id="@+id/bt_activate_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="激活生成码" />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <RelativeLayout
+                android:background="@color/backgroundwite"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:textColor="@color/heiseziti"
+                    android:id="@+id/keshencheng2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp"
+                    android:text="已生成码数" />
+                <TextView
+                    android:textColor="#f02314"
+                    android:textSize="28sp"
+                    android:background="@drawable/yuanffe6dc"
+                    android:id="@+id/tv_yishengcheng"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="354" />
+                <LinearLayout
+                    android:background="#d8d8da"
+                    android:layout_above="@+id/bt_query_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp">
+                </LinearLayout>
+                <Button
+                    android:textColor="#f0780a"
+                    android:textSize="16sp"
+                    android:background="@color/backgroundwite"
+                    android:id="@+id/bt_query_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:text="查看信息" />
 
-                <ImageView
-                    android:id="@+id/imageView55"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    app:srcCompat="@drawable/shape_corner" />
 
-                <TextView
-                    android:id="@+id/tv_yishengcheng"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:text="5" />
             </RelativeLayout>
+
         </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
