@@ -20,7 +20,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/keshencheng2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -29,7 +29,7 @@
                     android:text="可生成码数" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/bt_activate_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
@@ -45,7 +45,7 @@
                     app:srcCompat="@drawable/shape_corner" />
 
                 <TextView
-                    android:id="@+id/textView17"
+                    android:id="@+id/tv_keshencheng"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -63,21 +63,21 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/textView20"
+                    android:id="@+id/textView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="35dp"
-                    android:text="可生成码数" />
+                    android:text="已生成码数" />
 
                 <Button
-                    android:id="@+id/button45"
+                    android:id="@+id/bt_query_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:text="激活生成码" />
+                    android:text="查看信息" />
 
                 <ImageView
                     android:id="@+id/imageView55"
@@ -88,7 +88,7 @@
                     app:srcCompat="@drawable/shape_corner" />
 
                 <TextView
-                    android:id="@+id/textView175"
+                    android:id="@+id/tv_yishengcheng"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"

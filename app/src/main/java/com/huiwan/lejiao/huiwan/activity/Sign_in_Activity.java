@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.huiwan.lejiao.huiwan.R;
 import com.huiwan.lejiao.huiwan.control.Sign_in;
+import com.huiwan.lejiao.huiwan.utils.GetSysdata;
 
 /**
  * Created by zou on 2018/3/28.
@@ -58,15 +60,23 @@ public class Sign_in_Activity extends AppCompatActivity {
         username=ed_username.getText().toString();
         password=ed_password.getText().toString();
         Sign_in sign_in=new Sign_in(username,password);
+        sign_in.setsignlistener(new Sign_in.Signresult() {
+            @Override
+            public void signsuccessful(String t) {
+                finish();
+                Log.d("5555","Sign已结束");
+            }
+
+            @Override
+            public void signfail(String t) {
+
+            }
+        });
     }
     private void eventsViews() {
-
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, res);
-
         ed_username.setAdapter(adapter);
-
     }
-
     public static Activity getactivity(){
           return activity;
     }

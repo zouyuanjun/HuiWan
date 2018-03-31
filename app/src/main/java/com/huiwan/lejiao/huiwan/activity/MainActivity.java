@@ -3,18 +3,22 @@ package com.huiwan.lejiao.huiwan.activity;
 import android.content.Context;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.huiwan.lejiao.huiwan.R;
 import com.huiwan.lejiao.huiwan.control.Sign_in;
 import com.huiwan.lejiao.huiwan.fragment.Homepage;
@@ -22,11 +26,11 @@ import com.huiwan.lejiao.huiwan.fragment.Livelypage;
 import com.huiwan.lejiao.huiwan.fragment.Myselfpage;
 import com.huiwan.lejiao.huiwan.fragment.Providepage;
 import com.huiwan.lejiao.huiwan.fragment.Studentpage;
+import com.huiwan.lejiao.huiwan.utils.GetSysdata;
 import com.huiwan.lejiao.huiwan.viewadapter.ViewPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     ImageView im_homepage;
     ImageView im_provide;
@@ -35,16 +39,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView im_my;
     Context context;
 
-
+    TextView tv_toobar_text;
     private ViewPager viewPager;
 
     private ViewPagerAdapter viewPagerAdapter;
     private List<Fragment> fragmentlist=new ArrayList<>();
 
+    Handler handler=new Handler(){
+
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        Fresco.initialize(this.getApplicationContext());
         //requestWindowFeature(Window.FEATURE_NO_TITLE);      // 隐藏标题
+        Log.d("555", "Ma"+GetSysdata.getsysdata().datastring());
         setContentView(R.layout.activity_main);
         context=this;
         Toolbar toolbar =  findViewById(R.id.toolbar);
@@ -52,6 +63,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initview();
 
     }
+
+
     private void  initview(){
         fragmentlist.add(new Homepage());
         fragmentlist.add(new Providepage());
@@ -70,7 +83,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         im_lively.setOnClickListener(this);
         im_studeng.setOnClickListener(this);
         im_my.setOnClickListener(this);
-
+        tv_toobar_text=findViewById(R.id.tv_toolbar_title);
+        tv_toobar_text.setText("首页");
         viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager(),fragmentlist);
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setCurrentItem(0);
@@ -107,19 +121,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()){
             case R.id.im_homepage:
                 viewPager.setCurrentItem(0);
-                Toast.makeText(context,"第一个",Toast.LENGTH_LONG).show();
+                tv_toobar_text.setText("首页");
+
                 break;
             case R.id.im_provide:
+                tv_toobar_text.setText("发码");
                 viewPager.setCurrentItem(1);
-                Toast.makeText(context,"第二个",Toast.LENGTH_LONG).show();
+
                 break;
-            case R.layout.fragment_livelypage:
+            case R.id.im_student:
+                tv_toobar_text.setText("学员中心");
                 viewPager.setCurrentItem(2);
                 break;
-            case R.layout.fragment_studentpage:
+            case R.id.im_lively:
+                tv_toobar_text.setText("活跃度");
                 viewPager.setCurrentItem(3);
                 break;
-            case R.layout.fragment_myselfpage:
+            case R.id.im_my:
+                tv_toobar_text.setText("个人中心");
                 viewPager.setCurrentItem(4);
                 break;
 
