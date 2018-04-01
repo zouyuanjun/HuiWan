@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView tv_toobar_text;
     private ViewPager viewPager;
     Toolbar toolbar;
-
     private ViewPagerAdapter viewPagerAdapter;
     private List<Fragment> fragmentlist=new ArrayList<>();
 

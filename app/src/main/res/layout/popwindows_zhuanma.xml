@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+            <RelativeLayout
+                android:layout_centerHorizontal="true"
+                android:layout_width="300dp"
+                android:layout_height="350dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/backgroundwite">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    app:roundAsCircle="true"
+                    android:id="@+id/sd_zhuanmaphoto"
+                    android:layout_width="58dp"
+                    android:layout_height="58dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/colorPrimary" />
+
+                <TextView
+                    android:textSize="13sp"
+                    android:textColor="@color/colortextblack"
+                    android:layout_below="@id/sd_zhuanmaphoto"
+                    android:id="@+id/tv_zhuanmaname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="12dp"
+                    android:text="张三" />
+                <TextView
+                    android:textSize="13sp"
+                    android:textColor="#333333"
+                    android:layout_below="@+id/tv_zhuanmaname"
+                    android:id="@+id/textView25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/bt_jian"
+                    android:layout_marginTop="20dp"
+                    android:text="转码数量" />
+
+                <Button
+                    android:background="@color/yuanfef0de"
+                    android:layout_below="@+id/textView25"
+                    android:id="@+id/bt_jian"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="32dp"
+                    android:text="-----" />
+
+                <TextView
+                    android:textColor="@color/heiseziti"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:layout_alignTop="@id/bt_jian"
+                    android:id="@+id/tv_shezhizhuanma"
+                    android:layout_width="136dp"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"
+                    android:text="2" />
+
+
+                <Button
+                    android:textColor="#f02314"
+                    android:gravity="center"
+                    android:textSize="39sp"
+                    android:background="#ffe6dc"
+                    android:id="@+id/bt_zhuanma_jia"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignTop="@+id/bt_jian"
+                    android:layout_toEndOf="@+id/tv_shezhizhuanma"
+                    android:text="+" />
+
+                <TextView
+                    android:textSize="13sp"
+                    android:textColor="#666666"
+                    android:id="@+id/tv_zhuanma_kzms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/bt_zhuanma_jia"
+                    android:layout_marginTop="12dp"
+                    android:layout_alignStart="@+id/textView25"
+                    android:text="可转码数：15" />
+
+                <TextView
+                    android:textSize="13sp"
+                    android:textColor="#3ca0f5"
+                    android:id="@+id/tv_zhuanma_qbzc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/bt_zhuanma_jia"
+                    android:layout_alignTop="@+id/tv_zhuanma_kzms"
+                    android:text="全部转出" />
+
+                <Button
+                    android:layout_marginTop="30dp"
+                    android:background="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:textColor="#ffffff"
+                    android:id="@+id/bt_ensure_zhuanchu"
+                    android:layout_width="236dp"
+                    android:layout_height="44dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/tv_zhuanma_kzms"
+                    android:text="确认转出" />
+
+
+            </RelativeLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>

@@ -47,7 +47,7 @@ public class Sign_in {
         obj o=new obj(type,page,pagesize,sign);
         Gson gson=new Gson();
         password=gson.toJson(o);  //将json对象转换为字符串
-        network.connectnet(password,url,handler);
+        network.connectnet(password,url,handler,1);
     }
         Handler handler=new Handler() {
             @Override

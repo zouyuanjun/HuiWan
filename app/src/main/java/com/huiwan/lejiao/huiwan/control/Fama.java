@@ -23,7 +23,7 @@ public class Fama {
     public Fama() {
         Log.d("55555","用户ID"+StaticValue.id);
         Network network=Network.getnetwork();
-        network.connectnet("sss",url,handler);
+        network.connectnet("sss",url,handler,1);
 
     }
 

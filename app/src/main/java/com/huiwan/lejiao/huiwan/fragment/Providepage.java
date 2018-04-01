@@ -2,6 +2,7 @@ package com.huiwan.lejiao.huiwan.fragment;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -18,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.huiwan.lejiao.huiwan.R;
@@ -135,6 +137,9 @@ public class Providepage extends Fragment {
             @Override
             public void onClick(View view) {
                 getcode=textView.getText().toString();  //获取到激活成功的激活码后销毁
+                ClipboardManager cm = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                Toast.makeText(getActivity(),"复制成功",Toast.LENGTH_SHORT).show();
+                cm.setText(getcode);
                 window.dismiss();
             }
         });

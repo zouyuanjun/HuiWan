@@ -39,7 +39,8 @@
             android:layout_height="280dp"
             android:background="@color/backgroundwite">
             <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/imageView5"
+                app:roundAsCircle="true"
+                android:id="@+id/im_xueyuaninfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
