@@ -16,6 +16,7 @@ public class Xueyuan_zhuangma {
             super.handleMessage(msg);
             if (msg.what==1){
                 isfamacg=true;
+                zhuanma.tongzhizhuanmacg("1");
             }
         }
     };

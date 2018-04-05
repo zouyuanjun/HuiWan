@@ -93,6 +93,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp">
                 </LinearLayout>
+
                 <Button
                     android:textColor="#f0780a"
                     android:textSize="16sp"

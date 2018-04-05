@@ -9,7 +9,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.huiwan.lejiao.huiwan.DataBean.dbDataBasic;
 import com.huiwan.lejiao.huiwan.R;
+import com.huiwan.lejiao.huiwan.control.Setting_info;
 
 public class Setting_user_info_Activity extends AppCompatActivity {
 
@@ -63,12 +65,35 @@ public class Setting_user_info_Activity extends AppCompatActivity {
         });
     }
     private void getdate(){
+
+
         name=ed_username.getText().toString();
         phonenum=ed_userphonenum.getText().toString();
         idcard=ed_idcard.getText().toString();
         wechat=ed_wechat.getText().toString();
         taobao=ed_taobao.getText().toString();
         sjphonenum=ed_shangjiphonenum.getText().toString();
+
+        dbDataBasic setting_info_bean=new dbDataBasic();
+        setting_info_bean.setName(name);
+        setting_info_bean.setPhonenum(phonenum);
+        setting_info_bean.setIdcard(idcard);
+        setting_info_bean.setWeixin(wechat);
+        setting_info_bean.setTaobao(taobao);
+        setting_info_bean.setExphone(sjphonenum);
+        Setting_info setting_info=new Setting_info(setting_info_bean);
+        setting_info.setSetinglistener(new Setting_info.Settingresultlistern() {
+            @Override
+            public void Settingsuccessful() {
+                finish();
+            }
+
+            @Override
+            public void Settingfail() {
+
+            }
+        });
+
     }
 
 }

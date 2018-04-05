@@ -35,11 +35,10 @@ public class Studentpage extends Fragment implements AdapterView.OnItemClickList
 
     ImageView im_sjphoto;       //上级头像
     ImageView im_sjduanwei;     //上级段位图
-
-    TextView tv_sjname;     //上级姓名
-    TextView tv_sjshouji;   //上级手机号
+    TextView tv_sjname;         //上级姓名
+    TextView tv_sjshouji;       //上级手机号
     TextView tv_sjweixin;       //上级微信
-    ListView listView;      //学员信息listview
+    ListView listView;          //学员信息listview
     View rootview;
     ArrayList<PersonalinfoBean> arrayList=new ArrayList<>();
     Button button;
@@ -132,15 +131,18 @@ public class Studentpage extends Fragment implements AdapterView.OnItemClickList
                 tv_shezhizhuangma.setText(shezhizhuangma[0]+"");
             }
         });
-
         bt_ensure_zhuanma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+              xueyuan_zhuangma.ensurezhuangchu();
+            }
+        });
+        xueyuan_zhuangma.setXueyuanlistener(new Xueyuan_zhuangma.interface_Xueyuan_zhuanma() {
+            @Override
+            public void tongzhizhuanmacg(String t) {
                 zcsuceessfulpopwindows();
             }
         });
-
-
         window = new PopupWindow(contentView,  ViewGroup.LayoutParams.WRAP_CONTENT,  ViewGroup.LayoutParams.WRAP_CONTENT, true);
         // 设置PopupWindow的背景
         window.setBackgroundDrawable(new ColorDrawable(0xff2581ff));

@@ -1,6 +1,7 @@
 package com.huiwan.lejiao.huiwan.control;
 
 public class StaticValue {
+    public static String url="http://192.168.2.102:8080/HttpControl/serverControl";
     public static String id;
     public static String name;
     public static String lv;

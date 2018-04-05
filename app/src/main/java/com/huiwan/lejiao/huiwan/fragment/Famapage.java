@@ -31,7 +31,7 @@ import com.huiwan.lejiao.huiwan.control.Fama;
  * Created by zou on 2018/3/28.
  */
 
-public class Providepage extends Fragment {
+public class Famapage extends Fragment {
     Button bt_activate_code;
     Button bt_query_code;
     TextView tv_keshengcheng;

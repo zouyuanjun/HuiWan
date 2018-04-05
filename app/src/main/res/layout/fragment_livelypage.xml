@@ -191,5 +191,16 @@
                 android:textSize="11sp"
                 android:text="新进人数" />
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <lecho.lib.hellocharts.view.LineChartView
+                android:background="@color/backgroundwite"
+                android:id="@+id/mychar"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

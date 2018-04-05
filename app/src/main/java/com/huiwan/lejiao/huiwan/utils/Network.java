@@ -5,6 +5,8 @@ import android.os.Message;
 import android.preference.PreferenceActivity;
 import android.util.Log;
 
+import com.huiwan.lejiao.huiwan.control.StaticValue;
+
 import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -28,15 +30,18 @@ public class Network {
     private Network() {
 
     }
-    public void connectnet(String date , String url, final android.os.Handler handler, final int i){
+    public void connectnet(String date ,String header, final android.os.Handler handler, final int i){
         OkHttpClient client = new OkHttpClient();//创建OkHttpClient对象。
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");//数据类型为json格式，
         String jsonStr = date;//json数据.
+        Log.d("5555","发送body"+jsonStr);
         RequestBody body = RequestBody.create(JSON, jsonStr);
         Request request = new Request.Builder()
-                .url(url)
+                .addHeader("header",header)
+                .url(StaticValue.url)
                 .post(body)
                 .build();
+        Log.d("5555","开始发送");
         client.newCall(request).enqueue(new Callback() {
 
             @Override
@@ -49,8 +54,7 @@ public class Network {
                String s=response.body().string();
                message.what=i;
                message.obj=s;
-                handler.sendMessage(message);
-               Log.d("5555","返回数据"+s);
+               handler.sendMessage(message);
             }
         });
     }
