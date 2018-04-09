@@ -65,23 +65,24 @@
                     android:inputType="textPassword" />
 
                 <ImageButton
+                    android:id="@+id/bt_password_hint"
                     android:layout_gravity="center_vertical"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:background="@color/colorPrimary" />
+                    android:background="@drawable/lg_ic_password_nor" />
             </LinearLayout>
 
         </LinearLayout>
         <Button
             android:textColor="@color/textwite"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/lg_bt_lg_nor"
             android:id="@+id/bt_signin"
             android:layout_width="323dp"
             android:layout_height="44dp"
             android:layout_below="@+id/linearLayout"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
-            android:text="登陆" />
+            />
 
         <TextView
             android:id="@+id/tv_forget_password"

@@ -1,24 +1,31 @@
 package com.huiwan.lejiao.huiwan.DataBean;
 
 
-import com.huiwan.lejiao.huiwan.control.StaticValue;
-
 //登陆名和密码对象
 public class Signbean {
-    String name;
-    String password;
+    private String account="";
+    private String password="";
+    private String status="";
+    private String lasttime ="";
+    private String phone="";
 
-    public Signbean(String name, String password) {
-        this.name = name;
+    public Signbean(String account, String password, String status, String userid, String phone) {
+        super();
+        this.account = account;
         this.password = password;
+        this.status = status;
+        this.lasttime = userid;
+        this.phone = phone;
     }
 
-    public String getName() {
-        return name;
+
+
+    public String getAccount() {
+        return account;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     public String getPassword() {
@@ -27,5 +34,29 @@ public class Signbean {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setSex(String status) {
+        this.status = status;
+    }
+
+    public String getLasttime() {
+        return lasttime;
+    }
+
+    public void setLasttime(String lasttime) {
+        this.lasttime = lasttime;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

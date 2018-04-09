@@ -22,7 +22,7 @@
                     android:layout_height="58dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:background="@color/colorAccent" />
+                    android:background="@drawable/pfile_ic_portrait" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -82,14 +82,14 @@
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:layout_weight="1"
-                app:srcCompat="@android:drawable/btn_star" />
+                app:srcCompat="@drawable/pf_icon_meg" />
 
             <ImageView
                 android:layout_gravity="center_vertical"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:layout_weight="1"
-                app:srcCompat="@android:drawable/btn_star" />
+                app:srcCompat="@drawable/pf_icon_priofit" />
 
             <ImageView
                 android:layout_gravity="center_vertical"
@@ -97,7 +97,7 @@
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:layout_weight="1"
-                app:srcCompat="@mipmap/ic_launcher_round" />
+                app:srcCompat="@drawable/pf_icon_use" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -118,6 +118,8 @@
                 android:layout_height="wrap_content"
                 android:text="地区"/>
             <TextView
+                android:id="@+id/tv_city"
+                android:textSize="13sp"
                 android:textColor="@color/heiseziti"
                 android:layout_gravity="center_vertical"
                 android:gravity="end"
@@ -125,6 +127,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="江西"/>
+            <ImageButton
+                android:id="@+id/imb_citypick"
+                android:layout_gravity="center_vertical"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/pfile_ic_arrow"/>
         </LinearLayout>
         <LinearLayout
             android:paddingLeft="16dp"
@@ -140,6 +148,7 @@
                 android:layout_height="wrap_content"
                 android:text="出生日期"/>
             <TextView
+                android:id="@+id/tv_birday"
                 android:textColor="@color/heiseziti"
                 android:textSize="13sp"
                 android:layout_gravity="center_vertical"
@@ -148,6 +157,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1988-02-03"/>
+            <ImageButton
+                android:id="@+id/imb_birdaypick"
+                android:layout_gravity="center_vertical"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/pfile_ic_arrow"/>
         </LinearLayout>
         <LinearLayout
             android:divider="@color/colorPrimary"
@@ -169,8 +184,15 @@
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="江西"/>
+                android:text=""/>
+            <ImageButton
+                android:id="@+id/imb_setting"
+                android:layout_gravity="center_vertical"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/pfile_ic_arrow"/>
         </LinearLayout>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

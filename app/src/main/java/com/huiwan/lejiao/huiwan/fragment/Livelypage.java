@@ -52,6 +52,8 @@ public class Livelypage extends Fragment {
 
     private List<PointValue> mPointValues2 = new ArrayList<PointValue>();
     public void setdata(){
+        list.clear();
+        list2.clear();
         Chardata chartData=new Chardata("20","15");
         Chardata chartData1=new Chardata("21","20");
         Chardata chartData2=new Chardata("22","15");
