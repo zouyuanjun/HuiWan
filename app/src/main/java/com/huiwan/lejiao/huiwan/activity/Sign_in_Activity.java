@@ -82,9 +82,11 @@ public class Sign_in_Activity extends AppCompatActivity {
         });
     }
     private void getdate(){
-        username=ed_username.getText().toString();
+        username="15070078339";
+      //  username=ed_username.getText().toString();
         StaticValue.Account=username;
-        password=ed_password.getText().toString();
+        password="147258";
+      //  password=ed_password.getText().toString();
         Sign_in sign_in=new Sign_in(username,password);
         //登陆成功则销毁登陆界面
         sign_in.setsignlistener(new Sign_in.Signresult() {

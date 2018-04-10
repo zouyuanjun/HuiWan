@@ -40,7 +40,7 @@ public class Xueyuan_zhuangma {
     }
     public void ensurezhuangchu(){
         String url="https://www.baidu.com/";
-       network.connectnet("",url,handler,1);
+     //  network.connectnet("",url,handler,1);
     }
     public interface interface_Xueyuan_zhuanma {
 

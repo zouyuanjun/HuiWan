@@ -28,10 +28,10 @@ public class Home {
     public Home() {
         network=Network.getnetwork();
         //发送uid向服务器请求数据
-        Signbean signbean=new Signbean("","","","999999","");
+        Signbean signbean=new Signbean("","","","999999",StaticValue.phone);
         Gson gson=new Gson();
         String body=gson.toJson(signbean);
-        network.connectnet(body,"getbasic",handler,1);
+        network.connectnet(body,"getbasic",StaticValue.url,handler,1);
     }
 
     public interface Homeresult

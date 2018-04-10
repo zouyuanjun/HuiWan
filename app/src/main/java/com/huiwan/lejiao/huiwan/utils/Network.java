@@ -28,9 +28,8 @@ public class Network {
         return instance;
     }
     private Network() {
-
     }
-    public void connectnet(String date ,String header, final android.os.Handler handler, final int i){
+    public void connectnet(String date ,String header, String url,final android.os.Handler handler, final int i){
         OkHttpClient client = new OkHttpClient();//创建OkHttpClient对象。
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");//数据类型为json格式，
         String jsonStr = date;//json数据.
@@ -38,7 +37,7 @@ public class Network {
         RequestBody body = RequestBody.create(JSON, jsonStr);
         Request request = new Request.Builder()
                 .addHeader("header",header)
-                .url(StaticValue.url)
+                .url(url)
                 .post(body)
                 .build();
         client.newCall(request).enqueue(new Callback() {

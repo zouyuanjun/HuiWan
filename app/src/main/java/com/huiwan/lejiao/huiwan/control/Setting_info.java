@@ -44,7 +44,7 @@ public class Setting_info {
         Gson gson=new Gson();
         // String body="{\"address\":\"\",\"birthdate\":\"\",\"bymubiao\":\"\",\"byrenshu\":\"\",\"exname\":\"\",\"exphone\":\"18702508050\",\"exweixin\":\"\",\"idcard\":\"123456987\",\"jrmubiao\":\"\",\"jrrenshu\":\"\",\"lever\":\"\",\"name\":\"zouyuanjun\",\"phone\":\"18702508050\",\"taobao\":\"taobao\",\"userid\":\"999999\",\"weixin\":\"weinxin \"}";
         String body= gson.toJson(setting_info_bean);
-        network.connectnet(body,"setdata",handler,1);
+        network.connectnet(body,"setdata",StaticValue.url,handler,1);
     }
 
     public interface Settingresultlistern {

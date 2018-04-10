@@ -15,5 +15,4 @@ public class StaticValue {
     //可转码数
     public static int kezhuangmashu=15;
     public static String Account;
-
 }

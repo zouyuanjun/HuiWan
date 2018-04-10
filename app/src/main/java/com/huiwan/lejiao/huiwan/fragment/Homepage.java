@@ -56,7 +56,23 @@ public class Homepage extends Fragment {
         homePage.Sethomelistener(new Home.Homeresult() {
             @Override
             public void signsuccessful(DbDataBasic dbDataBasic) {
+                if (dbDataBasic.getLever().equals("1")){
+                    hp_dengji.setBackground(getActivity().getDrawable(R.drawable.home_ic_lv1));
+                }else if (dbDataBasic.getLever().equals("2")){
+                    hp_dengji.setBackground(getActivity().getDrawable(R.drawable.home_ic_lv2));
+                }else if (dbDataBasic.getLever().equals("3")){
+                    hp_dengji.setBackground(getActivity().getDrawable(R.drawable.home_ic_lv3));
+                }else if (dbDataBasic.getLever().equals("4")){
+                    hp_dengji.setBackground(getActivity().getDrawable(R.drawable.home_ic_lv4));
+                }else if (dbDataBasic.getLever().equals("5")){
+                    hp_dengji.setBackground(getActivity().getDrawable(R.drawable.home_ic_lv5));
+                }else if (dbDataBasic.getLever().equals("")){
 
+                }
+//                tv_jinrirenshu.setText(userdataBean.getJinrirenshu());
+//                tv_jinrimubiao.setText(userdataBean.getJinrimubiao());
+//                tv_dangyuerenshu.setText(userdataBean.getBenyuerenshu());
+//                tv_dangyuemubiao.setText(StaticValue.benyuemubiao);
             }
 
             @Override
@@ -64,27 +80,8 @@ public class Homepage extends Fragment {
 
             }
         });
-        SharedPreferences sp = getActivity().getSharedPreferences("SPuser", Activity.MODE_PRIVATE);
-        String info=sp.getString("SIGN","1");
-        if (info!="1"){
-            Gson gson=new Gson();
-            if (StaticValue.lv.equals("1")){
-                hp_dengji.setBackground(getActivity().getDrawable(R.drawable.home_ic_lv1));
-            }else if (StaticValue.lv.equals("2")){
-                hp_dengji.setBackground(getActivity().getDrawable(R.drawable.home_ic_lv2));
-            }else if (StaticValue.lv.equals("3")){
-                hp_dengji.setBackground(getActivity().getDrawable(R.drawable.home_ic_lv3));
-            }else if (StaticValue.lv.equals("4")){
-                hp_dengji.setBackground(getActivity().getDrawable(R.drawable.home_ic_lv4));
-            }else if (StaticValue.lv.equals("5")){
-                hp_dengji.setBackground(getActivity().getDrawable(R.drawable.home_ic_lv5));
-            }
-            UserdataBean userdataBean=gson.fromJson(info,UserdataBean.class);
-            tv_jinrirenshu.setText(userdataBean.getJinrirenshu());
-            tv_jinrimubiao.setText(userdataBean.getJinrimubiao());
-            tv_dangyuerenshu.setText(userdataBean.getBenyuerenshu());
-            tv_dangyuemubiao.setText(StaticValue.benyuemubiao);
-        }
+//        SharedPreferences sp = getActivity().getSharedPreferences("SPuser", Activity.MODE_PRIVATE);
+//        String info=sp.getString("SIGN","1");
     }
 
 }
