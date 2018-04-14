@@ -6,6 +6,7 @@ public class SignchengduBean {
     private String type="";
     private String sign="";
 
+
     public SignchengduBean(String account, String password, String type, String sign) {
         this.user = account;
         this.password = password;

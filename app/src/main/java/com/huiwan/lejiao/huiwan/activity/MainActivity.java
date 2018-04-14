@@ -21,7 +21,7 @@ import com.huiwan.lejiao.huiwan.fragment.Livelypage;
 import com.huiwan.lejiao.huiwan.fragment.Myselfpage;
 import com.huiwan.lejiao.huiwan.fragment.Famapage;
 import com.huiwan.lejiao.huiwan.fragment.Studentpage;
-import com.huiwan.lejiao.huiwan.utils.GetSysdata;
+import com.huiwan.lejiao.huiwan.utils.GetSystemdate;
 import com.huiwan.lejiao.huiwan.viewadapter.ViewPagerAdapter;
 
 import java.util.ArrayList;
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         Fresco.initialize(this.getApplicationContext());
         //requestWindowFeature(Window.FEATURE_NO_TITLE);      // 隐藏标题
-        Log.d("555", "Ma"+GetSysdata.getsysdata().datastring());
+        Log.d("555", "Ma"+ GetSystemdate.getsysdata().datastring());
         setContentView(R.layout.activity_main);
         context=this;
         toolbar =findViewById(R.id.toolbar);
@@ -83,30 +83,72 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager(),fragmentlist);
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setCurrentItem(0);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                switch (position){
+                    case 0:
+                        im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_sel));
+                        im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_nor));
+                        im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_nor));
+                        im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_nor));
+                        im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_nor));
+                        tv_toobar_text.setText("首页");
+                        break;
+                    case 1:
+                        tv_toobar_text.setText("发码");
+                        im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_nor));
+                        im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_nor));
+                        im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_nor));
+                        im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_nor));
+                        im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_sel));
+
+                        break;
+                    case 2:
+                        tv_toobar_text.setText("学员中心");
+                        im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_nor));
+                        im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_nor));
+                        im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_nor));
+                        im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_nor));
+                        im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_sel));
+                        break;
+                    case 3:
+                        tv_toobar_text.setText("活跃度");
+                        im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_nor));
+                        im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_nor));
+                        im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_nor));
+                        im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_nor));
+                        im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_sel));
+                        break;
+                    case 4:
+                        tv_toobar_text.setText("个人中心");
+                        im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_nor));
+                        im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_nor));
+                        im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_nor));
+                        im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_nor));
+                        im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_sel));
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        viewPagerAdapter.setpagelistener(new ViewPagerAdapter.Viewpageposition() {
+            @Override
+            public void sendposition(int position) {
+
+            }
+        });
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @Override
     public void onClick(View view) {
         switch (view.getId()){

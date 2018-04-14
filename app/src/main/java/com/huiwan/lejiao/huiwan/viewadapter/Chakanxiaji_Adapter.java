@@ -52,10 +52,10 @@ public class Chakanxiaji_Adapter extends BaseAdapter {
         tv_keyongma=itemview.findViewById(R.id.tv_xjitemkeyongma);
         im_photo=itemview.findViewById(R.id.im_xjitemphoto);
 
-        tv_name.setText(arrayList.get(i).getName());
-        tv_shouji.setText(arrayList.get(i).getPhonenum());
-        tv_weixin.setText(arrayList.get(i).getWeichat());
-        tv_keyongma.setText(arrayList.get(i).getKeyongma());
+        tv_name.setText("姓 名："+arrayList.get(i).getName());
+        tv_shouji.setText("手机号："+arrayList.get(i).getPhonenum());
+        tv_weixin.setText("微信号："+arrayList.get(i).getWeichat());
+        tv_keyongma.setText("可用码数："+arrayList.get(i).getKeyongma()+"");
         Uri uri = Uri.parse(arrayList.get(i).getPhotourl());
         im_photo.setImageURI(uri);
         return itemview;

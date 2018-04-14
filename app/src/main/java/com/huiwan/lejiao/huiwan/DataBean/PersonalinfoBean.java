@@ -1,13 +1,15 @@
 package com.huiwan.lejiao.huiwan.DataBean;
 
-public class PersonalinfoBean {
+import java.io.Serializable;
+
+public class PersonalinfoBean implements Serializable {
     String name;
     String phonenum;
     String weichat;
     String photourl;
-    String keyongma;
+    int keyongma;
 
-    public PersonalinfoBean(String name, String phonenum, String weichat, String photourl, String keyongma) {
+    public PersonalinfoBean(String name, String phonenum, String weichat, String photourl, int keyongma) {
         this.name = name;
         this.phonenum = phonenum;
         this.weichat = weichat;
@@ -47,11 +49,10 @@ public class PersonalinfoBean {
         this.photourl = photourl;
     }
 
-    public String getKeyongma() {
+    public int getKeyongma() {
         return keyongma;
     }
-
-    public void setKeyongma(String keyongma) {
+    public void setKeyongma(int keyongma) {
         this.keyongma = keyongma;
     }
 }

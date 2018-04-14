@@ -7,9 +7,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.huiwan.lejiao.huiwan.DataBean.Chardata;
 import com.huiwan.lejiao.huiwan.R;
+import com.huiwan.lejiao.huiwan.control.StaticValue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,10 @@ import lecho.lib.hellocharts.view.LineChartView;
  */
 
 public class Livelypage extends Fragment {
+    TextView tv_teamnum;
+    TextView tv_jrrenshu;
+
+
     private LineChartView lineChart;
     List<Chardata> list=new ArrayList<>();
     private List<PointValue> mPointValues = new ArrayList<PointValue>();
@@ -40,6 +46,10 @@ public class Livelypage extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootview=inflater.inflate(R.layout.fragment_livelypage,container,false);
         lineChart=rootview.findViewById(R.id.mychar);
+        tv_teamnum=rootview.findViewById(R.id.tv_teamnum);
+        tv_teamnum.setText(String.valueOf(StaticValue.teamnum));
+        tv_jrrenshu=rootview.findViewById(R.id.tv_jrrenshu);
+        tv_jrrenshu.setText(String.valueOf(StaticValue.jinrirenshu));
         setdata();
         getAxisPoints(list);
         getAxisPoints2(list2);
@@ -57,7 +67,7 @@ public class Livelypage extends Fragment {
         Chardata chartData=new Chardata("20","15");
         Chardata chartData1=new Chardata("21","20");
         Chardata chartData2=new Chardata("22","15");
-        Chardata chartData3=new Chardata("23","8");
+        Chardata chartData3=new Chardata("23","20");
         Chardata chartData4=new Chardata("24","44");
         Chardata chartData5=new Chardata("25","15");
         Chardata chartData6=new Chardata("26","30");
@@ -88,6 +98,7 @@ public class Livelypage extends Fragment {
      * 设置X 轴的显示
      */
     private void getAxisXLables( List<Chardata> list) {
+        mAxisXValues.clear();
         for (int i = 0; i < list.size(); i++) {
             mAxisXValues.add(new AxisValue(i).setLabel(list.get(i).getDate()));
         }
@@ -96,6 +107,7 @@ public class Livelypage extends Fragment {
      * 图表的每个点的显示
      */
     private void getAxisPoints(List<Chardata> list) {
+        mPointValues.clear();
         for (int i = 0; i < list.size(); i++) {
             float point=Float.parseFloat(list.get(i).getPoint());
             mPointValues.add(new PointValue(i, point));
@@ -103,11 +115,13 @@ public class Livelypage extends Fragment {
     }
 
     private void getAxisPoints2(List<Chardata> list) {
+        mPointValues2.clear();
         for (int i = 0; i < list.size(); i++) {
             float point=Float.parseFloat(list.get(i).getPoint());
             mPointValues2.add(new PointValue(i, point));
         }
     }
+
     private void initLineChart() {
         Line line = new Line(mPointValues).setColor(Color.parseColor("#FFe6dc"));  //折线的颜色（橙色）
         List<Line> lines = new ArrayList<Line>();
@@ -122,7 +136,7 @@ public class Livelypage extends Fragment {
 
         Line line2 = new Line(mPointValues2).setColor(Color.parseColor("#3ca0f5"));  //折线的颜色（橙色
         line2.setShape(ValueShape.CIRCLE);//折线图上每个数据点的形状  这里是圆形 （有三种 ：ValueShape.SQUARE  ValueShape.CIRCLE  ValueShape.DIAMOND）
-        line2.setCubic(false);//曲线是否平滑，即是曲线还是折线
+        line2.setCubic(true);//曲线是否平滑，即是曲线还是折线
         line2.setFilled(false);//是否填充曲线的面积
         line2.setHasLabels(true);//曲线的数据坐标是否加上备注
         // line.setHasLabelsOnlyForSelected(true);//点击数据坐标提示数据（设置了这个line.setHasLabels(true);就无效）

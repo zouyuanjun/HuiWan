@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class Studentinfo_list_Adapter extends BaseAdapter{
     Activity activity;
-
+    ArrayList<PersonalinfoBean> arrayList=new ArrayList<>();
     public Studentinfo_list_Adapter(Activity activity, ArrayList<PersonalinfoBean> arrayList) {
         this.activity = activity;
         this.arrayList = arrayList;
@@ -30,7 +30,7 @@ public class Studentinfo_list_Adapter extends BaseAdapter{
     Button bt_zhuangma;
     SimpleDraweeView im_photo;
 
-    ArrayList<PersonalinfoBean> arrayList=new ArrayList<>();
+
 
     @Override
     public int getCount() {
@@ -58,15 +58,15 @@ public class Studentinfo_list_Adapter extends BaseAdapter{
         bt_zhuangma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               zhuanma.tongzhizhuanma("当前item"+i);
+               zhuanma.tongzhizhuanma(i);
             }
         });
         im_photo=itemview.findViewById(R.id.im_itemphoto);
 
-        tv_name.setText(arrayList.get(i).getName());
-        tv_shouji.setText(arrayList.get(i).getPhonenum());
-        tv_weixin.setText(arrayList.get(i).getWeichat());
-        tv_keyongma.setText(arrayList.get(i).getKeyongma());
+        tv_name.setText("姓名:"+arrayList.get(i).getName());
+        tv_shouji.setText("手机："+arrayList.get(i).getPhonenum());
+        tv_weixin.setText("微信："+arrayList.get(i).getWeichat());
+        tv_keyongma.setText("可用码数："+arrayList.get(i).getKeyongma());
         Uri uri = Uri.parse(arrayList.get(i).getPhotourl());
         im_photo.setImageURI(uri);
         return itemview;
@@ -74,7 +74,7 @@ public class Studentinfo_list_Adapter extends BaseAdapter{
 
     public interface Zhuanma{
 
-        public void tongzhizhuanma(String t);
+        public void tongzhizhuanma(int t);
     }
 
     private  Zhuanma zhuanma;

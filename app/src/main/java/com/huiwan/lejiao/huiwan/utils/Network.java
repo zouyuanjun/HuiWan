@@ -33,7 +33,7 @@ public class Network {
         OkHttpClient client = new OkHttpClient();//创建OkHttpClient对象。
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");//数据类型为json格式，
         String jsonStr = date;//json数据.
-        Log.d("5555","发送请求体"+jsonStr);
+        Log.d("5555","发送请求头"+header+"请求体"+jsonStr);
         RequestBody body = RequestBody.create(JSON, jsonStr);
         Request request = new Request.Builder()
                 .addHeader("header",header)

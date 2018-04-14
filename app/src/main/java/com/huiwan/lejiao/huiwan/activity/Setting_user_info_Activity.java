@@ -12,10 +12,13 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.huiwan.lejiao.huiwan.DataBean.DbDataBasic;
+import com.huiwan.lejiao.huiwan.DataBean.Signbean;
 import com.huiwan.lejiao.huiwan.R;
 import com.huiwan.lejiao.huiwan.control.Setting_info;
 import com.huiwan.lejiao.huiwan.control.StaticValue;
+import com.huiwan.lejiao.huiwan.utils.GetAlerDialog;
 
 public class Setting_user_info_Activity extends AppCompatActivity {
 
@@ -37,11 +40,10 @@ public class Setting_user_info_Activity extends AppCompatActivity {
     String wechat;
     String taobao;
     String sjphonenum;
-    String sjname;
-    String sjwechat;
     Button bt_tijiao;
 
     static Activity activity;
+    Setting_info  setting_info;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +52,30 @@ public class Setting_user_info_Activity extends AppCompatActivity {
         initview();
     }
     private void initview(){
+        setting_info=new Setting_info(activity);
+        setting_info.setSetinglistener(new Setting_info.Settingresultlistern() {
+            @Override
+            public void querysj(String name, String weixin) {
+                tv_sjname.setText(name);
+                tv_sjwechat.setText(weixin);
+            }
+
+            @Override
+            public void Settingsuccessful() {
+                finish();
+            }
+            @Override
+            public void Settingfail() {
+                AlertDialog dialog = GetAlerDialog.getdialog(activity,"系统数据异常","请退出重新登陆或重装软件");
+                dialog.show();
+            }
+
+            @Override
+            public void queryfail() {
+                AlertDialog dialog = GetAlerDialog.getdialog(activity,"查询失败","请确认上级手机号是否正确");
+                dialog.show();
+            }
+        });
         ed_username=findViewById(R.id.ed_name);
         ed_userphonenum=findViewById(R.id.ed_phonenum);
         ed_idcard=findViewById(R.id.ed_idcard);
@@ -70,31 +96,33 @@ public class Setting_user_info_Activity extends AppCompatActivity {
                 getdate();
             }
         });
+        bt_querbangding.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bt_querbangding.setBackground(activity.getDrawable(R.drawable.list_bt_search_sel));
+                sjphonenum=ed_shangjiphonenum.getText().toString();
+                if (sjphonenum.length()>10){
+                setting_info.querysj(sjphonenum);
+                }
+            }
+        });
     }
     private void getdate(){
 
 
         name=ed_username.getText().toString();
         phonenum=ed_userphonenum.getText().toString();
+        StaticValue.phone=phonenum;
         idcard=ed_idcard.getText().toString();
         wechat=ed_wechat.getText().toString();
         taobao=ed_taobao.getText().toString();
         sjphonenum=ed_shangjiphonenum.getText().toString();
+        StaticValue.exphone=sjphonenum;
+        StaticValue.name=name;
+        StaticValue.weixin=wechat;
         DbDataBasic setting_info_bean=new DbDataBasic();
-        if (name==null||phonenum==null||idcard==null||wechat==null||taobao==null||sjphonenum==null){
-            AlertDialog.Builder builder = new AlertDialog.Builder(Sign_in_Activity.getactivity());
-            builder.setTitle("提交失败");
-            builder.setMessage("请填写所有信息再提交");
-            //点击对话框以外的区域是否让对话框消失
-            builder.setCancelable(true);
-            //设置正面按钮
-            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
-            AlertDialog dialog = builder.create();
+        if (name.isEmpty()||phonenum.isEmpty()||idcard.isEmpty()||wechat.isEmpty()||taobao.isEmpty()||sjphonenum.isEmpty()){
+            AlertDialog dialog = GetAlerDialog.getdialog(activity,"提交失败","请填写所有信息再提交");
             dialog.show();
         }else {
             setting_info_bean.setAccount(StaticValue.Account);
@@ -104,18 +132,10 @@ public class Setting_user_info_Activity extends AppCompatActivity {
             setting_info_bean.setWeixin(wechat);
             setting_info_bean.setTaobao(taobao);
             setting_info_bean.setExphone(sjphonenum);
-            Setting_info setting_info=new Setting_info(setting_info_bean);
-            setting_info.setSetinglistener(new Setting_info.Settingresultlistern() {
-                @Override
-                public void Settingsuccessful() {
-                    finish();
-                }
-                @Override
-                public void Settingfail() {
+            setting_info.setinfo(setting_info_bean);
 
-                }
-            });
         }
+
     }
     public static Activity getactivity(){
         return activity;

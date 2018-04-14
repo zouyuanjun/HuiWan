@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.huiwan.lejiao.huiwan.control.Sign_in;
+
 import java.util.List;
 
 /**
@@ -26,6 +28,16 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        pagelistener.sendposition(position);
         return fragments.get(position);
     }
+    public interface Viewpageposition{
+        public void sendposition(int position);
+    }
+    private Viewpageposition pagelistener;
+    public void setpagelistener( Viewpageposition pagelistener){
+        this.pagelistener=pagelistener;
+    }
+
+
 }

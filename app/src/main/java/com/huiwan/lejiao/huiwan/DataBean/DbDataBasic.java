@@ -9,10 +9,18 @@ public class DbDataBasic {
     private String taobao = "";          //淘宝
     private String address = "";         //地址
     private String birthdate = "";       //生日
-    private String lever = "";           //等级
+    private int lever = 0;           //等级
     private String exphone = "";         //上级手机号
-    private String codenum = "";		 //可生成注册码数量
+    private int codenum = 0;		 //可生成注册码数量
     private String account = "";
+
+    public int getCodenum() {
+        return codenum;
+    }
+
+    public void setCodenum(int codenum) {
+        this.codenum = codenum;
+    }
 
     public String getAccount() {
         return account;
@@ -85,11 +93,11 @@ public class DbDataBasic {
         this.birthdate = birthdate;
     }
 
-    public String getLever() {
+    public int getLever() {
         return lever;
     }
 
-    public void setLever(String lever) {
+    public void setLever(int lever) {
         this.lever = lever;
     }
 

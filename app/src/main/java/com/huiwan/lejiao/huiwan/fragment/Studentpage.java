@@ -1,6 +1,7 @@
 package com.huiwan.lejiao.huiwan.fragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -19,13 +20,17 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.huiwan.lejiao.huiwan.DataBean.DbDataBasic;
 import com.huiwan.lejiao.huiwan.DataBean.PersonalinfoBean;
 import com.huiwan.lejiao.huiwan.R;
 import com.huiwan.lejiao.huiwan.activity.Xueyuan_info_Activity;
+import com.huiwan.lejiao.huiwan.control.StaticValue;
 import com.huiwan.lejiao.huiwan.control.Xueyuan_zhuangma;
+import com.huiwan.lejiao.huiwan.utils.GetAlerDialog;
 import com.huiwan.lejiao.huiwan.viewadapter.Studentinfo_list_Adapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by zou on 2018/3/28.
@@ -41,10 +46,14 @@ public class Studentpage extends Fragment implements AdapterView.OnItemClickList
     ListView listView;          //学员信息listview
     View rootview;
     ArrayList<PersonalinfoBean> arrayList=new ArrayList<>();
-    Button button;
     Activity activity;
     Xueyuan_zhuangma xueyuan_zhuangma;
     PopupWindow window;
+    TextView tv_kzms;                       //可转码数
+    TextView tv_qbzc;               //全部转出
+    Studentinfo_list_Adapter adapter;
+
+    TextView tv_noxueyuan;
 
     @Nullable
     @Override
@@ -56,51 +65,96 @@ public class Studentpage extends Fragment implements AdapterView.OnItemClickList
         tv_sjshouji=rootview.findViewById(R.id.tv_xuesjshouji);
         tv_sjweixin=rootview.findViewById(R.id.tv_xuesjweixin);
         listView=rootview.findViewById(R.id.lv_studentlist);
+        tv_noxueyuan=rootview.findViewById(R.id.tv_meiyouxueyuan);
         activity=getActivity();
-        setdata();
+        adapter=new Studentinfo_list_Adapter(activity,arrayList);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(this);
+        adapter.setsignlistener(new Studentinfo_list_Adapter.Zhuanma() {
+            @Override
+            public void tongzhizhuanma(int t) {
+                String tophone=arrayList.get(t).getPhonenum();
+                zhuanmapopwindows(tophone,arrayList.get(t).getName());
+            }
+        });
         return rootview;
+    }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser){
+            setdata();
+        }
     }
     public void setdata(){
         xueyuan_zhuangma=new Xueyuan_zhuangma();
-        String url="http://img5q.duitang.com/uploads/item/201410/04/20141004212538_SXjWV.jpeg";
-        PersonalinfoBean personalinfoBean=new PersonalinfoBean("张三","18702508050","sbjdjk5",url,"15");
-        arrayList.clear();
-        arrayList.add(personalinfoBean);
-        arrayList.add(personalinfoBean);
-        arrayList.add(personalinfoBean);
-        arrayList.add(personalinfoBean);
-        arrayList.add(personalinfoBean);
-        arrayList.add(personalinfoBean);
-        arrayList.add(personalinfoBean);
-        arrayList.add(personalinfoBean);
-        arrayList.add(personalinfoBean);
-        arrayList.add(personalinfoBean);
-        arrayList.add(personalinfoBean);
-        arrayList.add(personalinfoBean);
-        Studentinfo_list_Adapter adapter=new Studentinfo_list_Adapter(activity,arrayList);
-        adapter.setsignlistener(new Studentinfo_list_Adapter.Zhuanma() {
+        xueyuan_zhuangma.getshangjiinfo();
+        xueyuan_zhuangma.getxiajiinfo(StaticValue.phone);
+
+        final String url="http://img4.duitang.com/uploads/item/201602/07/20160207104805_nmcdP.thumb.700_0.jpeg";
+
+        xueyuan_zhuangma.setXueyuanlistener(new Xueyuan_zhuangma.interface_Xueyuan_zhuanma() {
             @Override
-            public void tongzhizhuanma(String t) {
-                Log.d("5555","转码弹窗"+t);
-                zhuanmapopwindows();
+            public void getxiajilist(List<DbDataBasic> list) {
+                tv_noxueyuan.setVisibility(View.GONE);
+                arrayList.clear();
+                    for (DbDataBasic dbDataBasic:list){
+                        PersonalinfoBean personalinfoBean=new PersonalinfoBean(dbDataBasic.getName(),dbDataBasic.getPhone(),dbDataBasic.getWeixin(),url,dbDataBasic.getCodenum());
+                        arrayList.add(personalinfoBean);
+                    }
+                adapter.notifyDataSetChanged();
+            }
+            @Override
+            public void getshangjiinfo(DbDataBasic dbDataBasic) {
+                if (dbDataBasic.getLever()==1){
+                    im_sjduanwei.setBackground(getActivity().getDrawable(R.drawable.stud_ic_lv1));
+                }else if (dbDataBasic.getLever()==2){
+                    im_sjduanwei.setBackground(getActivity().getDrawable(R.drawable.stud_ic_lv2));
+                }else if (dbDataBasic.getLever()==3){
+                    im_sjduanwei.setBackground(getActivity().getDrawable(R.drawable.stud_ic_lv3));
+                }else if (dbDataBasic.getLever()==4){
+                    im_sjduanwei.setBackground(getActivity().getDrawable(R.drawable.stud_ic_lv4));
+                }else if (dbDataBasic.getLever()==5){
+                    im_sjduanwei.setBackground(getActivity().getDrawable(R.drawable.stud_ic_lv5));
+                }else if (dbDataBasic.getLever()==0){
+
+                }
+              //  im_sjphoto.setBackground(getActivity().getDrawable(R.drawable.pfile_ic_portrait));
+                tv_sjname.setText("姓名:"+dbDataBasic.getName());
+                tv_sjshouji.setText("手机:"+dbDataBasic.getPhone());
+                tv_sjweixin.setText("微信:"+dbDataBasic.getWeixin());
+            }
+
+            @Override
+            public void tongzhizhuanmacg() {
+                tv_kzms.setText("可转码数："+StaticValue.kezhuangmashu);
+                zcsuceessfulpopwindows();
+            }
+
+            @Override
+            public void tongzhizhuanmafall() {
+                AlertDialog dialog = GetAlerDialog.getdialog(activity,"转码失败","您好像没有足够的码可以转哦。");
+                dialog.show();
             }
         });
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(this);
     }
+
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {   //跳到学员界面
+        String xiajiphone=arrayList.get(position).getPhonenum();
         Intent intent=new Intent(getActivity(), Xueyuan_info_Activity.class);
+        intent.putExtra("phone",xiajiphone);
+        intent.putExtra("name",arrayList.get(position).getName());
+        intent.putExtra("weixin",arrayList.get(position).getWeichat());
         startActivity(intent);
     }
-    public void zhuanmapopwindows(){
+    public void zhuanmapopwindows(final String tophone,String name){
         final int[] shezhizhuangma = new int[1];  //设置的转码数量
         Button bt_ensure_zhuanma;
         Button bt_jia;                            //加
         Button bt_jian;                          //减
         final TextView tv_shezhizhuangma;             //设置的转码数
-        TextView tv_kzms;                       //可转码数
-        TextView tv_qbzc;               //全部转出
+
 
         //设置背景变暗
         WindowManager.LayoutParams lp = activity.getWindow().getAttributes();
@@ -113,13 +167,23 @@ public class Studentpage extends Fragment implements AdapterView.OnItemClickList
         tv_shezhizhuangma=contentView.findViewById(R.id.tv_shezhizhuanma);
         tv_qbzc=contentView.findViewById(R.id.tv_zhuanma_qbzc);
         tv_kzms=contentView.findViewById(R.id.tv_zhuanma_kzms);
+        TextView toname=contentView.findViewById(R.id.tv_zhuanmaname);
+        toname.setText(name);
+        final int codenum=StaticValue.kezhuangmashu;
+        tv_kzms.setText("可转码数："+codenum);
+        tv_qbzc.setOnClickListener(new View.OnClickListener() {  //全部转出按钮
+            @Override
+            public void onClick(View v) {
+                tv_shezhizhuangma.setText(String.valueOf(codenum));
+            }
+        });
         //加按钮监听
         bt_jia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                shezhizhuangma[0] = xueyuan_zhuangma.zhuanmajia();
                //+1
-               tv_shezhizhuangma.setText(shezhizhuangma[0]+"");
+               tv_shezhizhuangma.setText(String.valueOf(shezhizhuangma[0]));
             }
         });
         //减按钮监听
@@ -128,21 +192,18 @@ public class Studentpage extends Fragment implements AdapterView.OnItemClickList
             public void onClick(View v) {
                 //-1
                 shezhizhuangma[0] =xueyuan_zhuangma.zhuanmajian();
-                tv_shezhizhuangma.setText(shezhizhuangma[0]+"");
+                tv_shezhizhuangma.setText(String.valueOf(shezhizhuangma[0]));
             }
         });
+
+        //确认转码
         bt_ensure_zhuanma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              xueyuan_zhuangma.ensurezhuangchu();
+              xueyuan_zhuangma.ensurezhuangchu(StaticValue.phone,tophone);
             }
         });
-        xueyuan_zhuangma.setXueyuanlistener(new Xueyuan_zhuangma.interface_Xueyuan_zhuanma() {
-            @Override
-            public void tongzhizhuanmacg(String t) {
-                zcsuceessfulpopwindows();
-            }
-        });
+
         window = new PopupWindow(contentView,  ViewGroup.LayoutParams.WRAP_CONTENT,  ViewGroup.LayoutParams.WRAP_CONTENT, true);
         // 设置PopupWindow的背景
         window.setBackgroundDrawable(new ColorDrawable(0xff2581ff));

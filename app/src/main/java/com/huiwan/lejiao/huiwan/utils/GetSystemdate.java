@@ -3,16 +3,16 @@ package com.huiwan.lejiao.huiwan.utils;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class GetSysdata {
+public class GetSystemdate {
 
     static Date day=new Date();
     SimpleDateFormat df;
 
-    private static   GetSysdata getSysdata=new GetSysdata();
-     private  GetSysdata() {
+    private static GetSystemdate getSysdata=new GetSystemdate();
+     private GetSystemdate() {
         df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss：SSS");
     }
-    public static GetSysdata getsysdata(){
+    public static GetSystemdate getsysdata(){
         return getSysdata;
     }
     public String datastring(){

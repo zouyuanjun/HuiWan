@@ -19,7 +19,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="25dp"
-                    android:background="@color/colorPrimary" />
+                    android:background="@drawable/pfile_ic_portrait" />
 
                 <TextView
                     android:textSize="13sp"
@@ -43,7 +43,7 @@
                     android:text="转码数量" />
 
                 <Button
-                    android:background="@color/yuanfef0de"
+                    android:background="@drawable/pop_bt_reduce"
                     android:layout_below="@+id/textView25"
                     android:id="@+id/bt_jian"
                     android:layout_width="50dp"
@@ -51,7 +51,7 @@
                     android:layout_marginTop="12dp"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="32dp"
-                    android:text="-----" />
+                     />
 
                 <TextView
                     android:textColor="@color/heiseziti"
@@ -62,20 +62,20 @@
                     android:layout_width="136dp"
                     android:layout_height="50dp"
                     android:layout_centerInParent="true"
-                    android:text="2" />
+                    android:text="1" />
 
 
                 <Button
                     android:textColor="#f02314"
                     android:gravity="center"
                     android:textSize="39sp"
-                    android:background="#ffe6dc"
+                    android:background="@drawable/pop_bt_add"
                     android:id="@+id/bt_zhuanma_jia"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_alignTop="@+id/bt_jian"
                     android:layout_toEndOf="@+id/tv_shezhizhuanma"
-                    android:text="+" />
+                    />
 
                 <TextView
                     android:textSize="13sp"
@@ -86,7 +86,7 @@
                     android:layout_below="@+id/bt_zhuanma_jia"
                     android:layout_marginTop="12dp"
                     android:layout_alignStart="@+id/textView25"
-                    android:text="可转码数：15" />
+                    android:text="可转码数：0" />
 
                 <TextView
                     android:textSize="13sp"

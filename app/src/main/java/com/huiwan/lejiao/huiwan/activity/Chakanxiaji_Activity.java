@@ -38,25 +38,25 @@ public class Chakanxiaji_Activity extends AppCompatActivity{
                 finish();
             }
         });
+        arrayList = (ArrayList<PersonalinfoBean>) getIntent().getSerializableExtra("xiajiliebiao");
         listView=findViewById(R.id.lv_chakanxiaji);
         setdata();
     }
     public void setdata(){
-        String url="http://img5q.duitang.com/uploads/item/201410/04/20141004212538_SXjWV.jpeg";
-        PersonalinfoBean personalinfoBean=new PersonalinfoBean("张三","18702508050","sbjdjk5",url,"15");
-        arrayList.add(personalinfoBean);
-        arrayList.add(personalinfoBean);
-        arrayList.add(personalinfoBean);
-        arrayList.add(personalinfoBean);
-        arrayList.add(personalinfoBean);
-        arrayList.add(personalinfoBean);
+//        String url="http://img5q.duitang.com/uploads/item/201410/04/20141004212538_SXjWV.jpeg";
+//        PersonalinfoBean personalinfoBean=new PersonalinfoBean("张三","18702508050","sbjdjk5",url,15);
+//        arrayList.add(personalinfoBean);
+//        arrayList.add(personalinfoBean);
+//        arrayList.add(personalinfoBean);
+//        arrayList.add(personalinfoBean);
+//        arrayList.add(personalinfoBean);
+//        arrayList.add(personalinfoBean);
         Chakanxiaji_Adapter adapter=new Chakanxiaji_Adapter(arrayList);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent(Chakanxiaji_Activity.this,Xiaji_info_Activity.class);
-                startActivity(intent);
+
             }
         });
 
