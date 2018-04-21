@@ -12,9 +12,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.huiwan.lejiao.huiwan.DataBean.DbDataBasic;
+import com.huiwan.lejiao.huiwan.DataBean.LowerMgr;
 import com.huiwan.lejiao.huiwan.DataBean.PersonalinfoBean;
 import com.huiwan.lejiao.huiwan.DataBean.UsermubiaoBean;
 import com.huiwan.lejiao.huiwan.R;
+import com.huiwan.lejiao.huiwan.control.Home;
 import com.huiwan.lejiao.huiwan.control.Xueyuan_zhuangma;
 import com.huiwan.lejiao.huiwan.viewadapter.Chakanxiaji_Adapter;
 
@@ -28,7 +30,7 @@ public class Xueyuan_info_Activity extends AppCompatActivity {
     TextView tv_jinrimubiao;
     TextView tv_toolbar_xiaji;;
     Activity activity;
-
+    String phone;
     TextView tv_name;
     TextView tv_phone;
     TextView tv_weixin;
@@ -44,7 +46,7 @@ public class Xueyuan_info_Activity extends AppCompatActivity {
         tv_name=findViewById(R.id.tv_xueyuan_name);
         tv_phone=findViewById(R.id.tv_xueyuan_phone);
         tv_weixin=findViewById(R.id.tv_xueyuan_weixin);
-
+        phone=getIntent().getStringExtra("phone");
         tv_name.setText(getIntent().getStringExtra("name"));
         tv_phone.setText(getIntent().getStringExtra("phone"));
         tv_weixin.setText(getIntent().getStringExtra("weixin"));
@@ -79,6 +81,7 @@ public class Xueyuan_info_Activity extends AppCompatActivity {
             }
         });
         getxiaji();
+        getmubiao();
     }
     public  void getxiaji(){
         Xueyuan_zhuangma xueyuan_zhuangma=new Xueyuan_zhuangma();
@@ -105,6 +108,32 @@ public class Xueyuan_info_Activity extends AppCompatActivity {
 
             @Override
             public void tongzhizhuanmafall() {
+
+            }
+        });
+    }
+    public  void getmubiao(){
+        Home home=new Home();
+        home.getmubiao(phone);
+        home.Sethomelistener(new Home.Homeresult() {
+            @Override
+            public void gethomefail() {
+
+            }
+
+            @Override
+            public void signsuccessful(DbDataBasic dbDataBasic) {
+
+            }
+
+            @Override
+            public void getmubiao(UsermubiaoBean usermubiaoBean) {
+                tv_jinrixinzen.setText(String.valueOf(usermubiaoBean.getJrrenshu()));
+                tv_jinrimubiao.setText(String.valueOf(usermubiaoBean.getJrmubiao()));
+            }
+
+            @Override
+            public void getlever(LowerMgr lowerMgr) {
 
             }
         });

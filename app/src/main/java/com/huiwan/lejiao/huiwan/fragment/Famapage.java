@@ -92,7 +92,7 @@ public class Famapage extends Fragment {
                     @Override
                     public void onClick(View view) {
                         Signbean signbean=new Signbean("","","","",StaticValue.phone);
-                        if (StaticValue.kezhuangmashu>1){
+                        if (StaticValue.kezhuangmashu>=1){
                             fama.creatcode(signbean);
                         }else {
                             AlertDialog dialog = GetAlerDialog.getdialog(activity,"激活失败","请确认是否有码可以激活");
@@ -123,15 +123,18 @@ public class Famapage extends Fragment {
         tv_keshengcheng=rootview.findViewById(R.id.tv_keshencheng);
 
         tv_yishengcheng=rootview.findViewById(R.id.tv_yishengcheng);
-
+        tv_keshengcheng.setText(String.valueOf(StaticValue.kezhuangmashu));
+        initdata();
+        fama.getcodeinfo();
+        Log.d("555","fama噜噜onCreateView");
         return rootview;
     }
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser){
-            tv_keshengcheng.setText(String.valueOf(StaticValue.kezhuangmashu));
-            initdata();
+
+
             Log.d("famapage","发码可见了");
 
         }
@@ -164,7 +167,7 @@ public class Famapage extends Fragment {
 
             }
         });
-        fama.getcodeinfo();
+
     }
     public void successfulpopwindows(final String str){
         final PopupWindow window;

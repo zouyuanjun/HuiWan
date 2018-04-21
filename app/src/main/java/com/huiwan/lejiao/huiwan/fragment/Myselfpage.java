@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.huiwan.lejiao.huiwan.R;
+import com.huiwan.lejiao.huiwan.control.Setting_info;
 import com.huiwan.lejiao.huiwan.control.StaticValue;
 import com.huiwan.lejiao.huiwan.utils.GetAlerDialog;
 import com.lljjcoder.Interface.OnCityItemClickListener;
@@ -52,6 +53,7 @@ public class Myselfpage extends Fragment {
     Context context;
     View rootview;
     Activity activity;
+    Setting_info setting_info;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -63,7 +65,7 @@ public class Myselfpage extends Fragment {
         im_msg=rootview.findViewById(R.id.im_meg_centen);
         im_shouyi=rootview.findViewById(R.id.im_shouyi);
         im_shiyongjiaocheng=rootview.findViewById(R.id.im_shiyongjiaochen);
-
+        setting_info=new Setting_info(activity);
         tv_city=rootview.findViewById(R.id.tv_city);
         tv_birday=rootview.findViewById(R.id.tv_birday);
         tv_user_centen_name=rootview.findViewById(R.id.tv_user_centen_name);
@@ -84,6 +86,12 @@ public class Myselfpage extends Fragment {
         tv_user_centen_name.setText("姓 名："+StaticValue.name);
         tv_user_centen_phone.setText("手机号："+StaticValue.phone);
         tv_user_centen_weixin.setText("微信号："+StaticValue.weixin);
+        if (!StaticValue.dbDataBasic.getAddress().isEmpty()){
+            tv_city.setText(StaticValue.dbDataBasic.getAddress());
+        }
+        if (!StaticValue.dbDataBasic.getBirthdate().isEmpty()){
+            tv_birday.setText(StaticValue.dbDataBasic.getBirthdate());
+        }
         context=getContext();
         imb_birdaypick.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +101,8 @@ public class Myselfpage extends Fragment {
                     @Override
                     public void handle(String time) {
                         tv_birday.setText(time.substring(0,time.length()-5));
+                        StaticValue.dbDataBasic.setBirthdate(time.substring(0,time.length()-5));
+                        setting_info.updatainfo(StaticValue.dbDataBasic);
                     }
                 }, "1960-11-22 17:34", "2018-12-1 15:20");
                 timeSelector.setMode(TimeSelector.MODE.YMD);
@@ -123,7 +133,11 @@ public class Myselfpage extends Fragment {
                         //地区
                         if (district != null) {
                             citysrt=citysrt+"·"+district.getName();
+                            citysrt=citysrt.replace("省","");
+                            citysrt=citysrt.replace("市","");
                             tv_city.setText(citysrt);
+                            StaticValue.dbDataBasic.setAddress(citysrt);
+                            setting_info.updatainfo(StaticValue.dbDataBasic);
                             Log.d("55555",district.getName());
                         }
                     }
@@ -140,21 +154,21 @@ public class Myselfpage extends Fragment {
         im_msg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog dialog = GetAlerDialog.getdialog(activity,"暂未开放","敬请期待");
+                AlertDialog dialog = GetAlerDialog.getdialog(activity,"敬请期待","程序猿小哥哥正在加班开发···");
                 dialog.show();
             }
         });
         im_shouyi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog dialog = GetAlerDialog.getdialog(activity,"暂未开放","敬请期待");
+                AlertDialog dialog = GetAlerDialog.getdialog(activity,"敬请期待","程序猿小哥哥正在加班开发···");
                 dialog.show();
             }
         });
         im_shiyongjiaocheng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog dialog = GetAlerDialog.getdialog(activity,"暂未开放","敬请期待");
+                AlertDialog dialog = GetAlerDialog.getdialog(activity,"敬请期待","程序猿小哥哥正在加班开发···");
                 dialog.show();
             }
         });

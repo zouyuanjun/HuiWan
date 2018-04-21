@@ -1,6 +1,7 @@
 package com.huiwan.lejiao.huiwan.fragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,8 @@ import com.huiwan.lejiao.huiwan.DataBean.UsermubiaoBean;
 import com.huiwan.lejiao.huiwan.R;
 import com.huiwan.lejiao.huiwan.control.Home;
 import com.huiwan.lejiao.huiwan.control.StaticValue;
+import com.huiwan.lejiao.huiwan.utils.GetAlerDialog;
+
 /**
  * Created by zou on 2018/3/28.
  */
@@ -56,6 +59,12 @@ public class Homepage extends Fragment {
     public void getdata(){
         Home homePage=new Home();
         homePage.Sethomelistener(new Home.Homeresult() {
+            @Override
+            public void gethomefail() {
+                AlertDialog dialog = GetAlerDialog.getdialog(activity,"获取数据失败","服务器错误，程序猿小哥正在处理···");
+                dialog.show();
+            }
+
             @Override
             public void signsuccessful(DbDataBasic dbDataBasic) {
                 lever=dbDataBasic.getLever();

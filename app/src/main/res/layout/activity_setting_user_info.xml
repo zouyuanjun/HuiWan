@@ -51,6 +51,7 @@
                 android:textSize="13sp"
                 android:id="@+id/textView18" />
             <EditText
+                android:singleLine="true"
                 android:id="@+id/ed_name"
                 android:layout_centerVertical="true"
                 android:background="@null"
@@ -73,6 +74,7 @@
                 android:textSize="13sp"
                 android:id="@+id/textView98" />
             <EditText
+                android:singleLine="true"
                 android:id="@+id/ed_phonenum"
                 android:layout_centerVertical="true"
                 android:background="@null"
@@ -95,6 +97,7 @@
                 android:textSize="13sp"
                 android:id="@+id/textView68" />
             <EditText
+                android:singleLine="true"
                 android:id="@+id/ed_idcard"
                 android:layout_centerVertical="true"
                 android:background="@null"
@@ -117,6 +120,7 @@
                 android:textSize="13sp"
                 android:id="@+id/textView181" />
             <EditText
+                android:singleLine="true"
                 android:id="@+id/ed_wechat"
                 android:layout_centerVertical="true"
                 android:background="@null"
@@ -139,6 +143,7 @@
                 android:textSize="13sp"
                 android:id="@+id/textView158" />
             <EditText
+                android:singleLine="true"
                 android:id="@+id/ed_taobao"
                 android:layout_centerVertical="true"
                 android:background="@null"
@@ -198,6 +203,7 @@
                 android:layout_height="wrap_content"
                 android:text="绑定上级"/>
             <EditText
+                android:singleLine="true"
                 android:id="@+id/ed_sjphonenum"
                 android:background="@null"
                 android:layout_marginStart="90dp"

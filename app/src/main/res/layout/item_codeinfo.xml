@@ -96,6 +96,16 @@
             android:layout_alignTop="@+id/textView20"
             android:layout_marginEnd="16dp"
             android:text="180312  8:32" />
+
+        <TextView
+            android:textColor="@color/colortextblack"
+            android:textSize="11sp"
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/tv_isuse"
+            android:layout_alignTop="@+id/textView19"
+            android:text="长按即可复制激活码" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

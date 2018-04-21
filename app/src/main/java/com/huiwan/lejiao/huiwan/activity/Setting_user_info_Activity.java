@@ -2,11 +2,13 @@ package com.huiwan.lejiao.huiwan.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -56,6 +58,7 @@ public class Setting_user_info_Activity extends AppCompatActivity {
         setting_info.setSetinglistener(new Setting_info.Settingresultlistern() {
             @Override
             public void querysj(String name, String weixin) {
+                bt_querbangding.setBackground(activity.getDrawable(R.drawable.list_bt_search_nor));
                 tv_sjname.setText(name);
                 tv_sjwechat.setText(weixin);
             }
@@ -66,12 +69,19 @@ public class Setting_user_info_Activity extends AppCompatActivity {
             }
             @Override
             public void Settingfail() {
+                bt_querbangding.setBackground(activity.getDrawable(R.drawable.list_bt_search_nor));
+                tv_sjname.setText("");
+                tv_sjwechat.setText("");
                 AlertDialog dialog = GetAlerDialog.getdialog(activity,"系统数据异常","请退出重新登陆或重装软件");
                 dialog.show();
             }
 
             @Override
             public void queryfail() {
+
+                bt_querbangding.setBackground(activity.getDrawable(R.drawable.list_bt_search_nor));
+                tv_sjname.setText("");
+                tv_sjwechat.setText("");
                 AlertDialog dialog = GetAlerDialog.getdialog(activity,"查询失败","请确认上级手机号是否正确");
                 dialog.show();
             }
@@ -103,6 +113,8 @@ public class Setting_user_info_Activity extends AppCompatActivity {
                 sjphonenum=ed_shangjiphonenum.getText().toString();
                 if (sjphonenum.length()>10){
                 setting_info.querysj(sjphonenum);
+                    ((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow( activity.getCurrentFocus().getWindowToken(),
+                            InputMethodManager.HIDE_NOT_ALWAYS);
                 }
             }
         });
@@ -136,8 +148,5 @@ public class Setting_user_info_Activity extends AppCompatActivity {
 
         }
 
-    }
-    public static Activity getactivity(){
-        return activity;
     }
 }

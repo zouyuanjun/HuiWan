@@ -80,6 +80,7 @@ public class Sign_in {
                StaticValue.kezhuangmashu=dbDataBasic.getCodenum();
                StaticValue.name=dbDataBasic.getName();
                StaticValue.weixin=dbDataBasic.getWeixin();
+               StaticValue.dbDataBasic=dbDataBasic;
            }catch (JsonSyntaxException e){
                signresult.signfail("fail");
            }

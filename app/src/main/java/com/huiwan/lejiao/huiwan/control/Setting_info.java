@@ -79,6 +79,10 @@ public class Setting_info {
         String body= gson.toJson(setting_info_bean);
         network.connectnet(body,"setdata",StaticValue.url,handler,1);
     }
+    public void updatainfo(DbDataBasic setting_info_bean){
+        String body= gson.toJson(setting_info_bean);
+        network.connectnet(body,"setdata",StaticValue.url,handler,3);
+    }
 
     public interface Settingresultlistern {
         public  void querysj(String phone,String weixin);

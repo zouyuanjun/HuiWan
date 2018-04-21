@@ -1,6 +1,7 @@
 package com.huiwan.lejiao.huiwan.control;
 
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
@@ -21,7 +22,7 @@ public class Fama {
     Gson gson;
     Network network;
     String url="http://192.168.2.103:8080/HttpControl/serverControl";
-    Handler handler=new Handler() {
+    Handler handler=new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -39,17 +40,22 @@ public class Fama {
             }
             if (i==2){
                 String result= (String) msg.obj;
+                Log.d("555","获取已生成码信息"+result);
                 result=result.substring(1,result.length()-1);
                 String code="0";
                 try {
                     JsonElement je = new JsonParser().parse(result);
+                    Log.d("555",je.toString());
                     code  = je.getAsJsonObject().get("result").getAsString();
                 }catch (JsonSyntaxException e){
+                }catch (NullPointerException exception){
+                    Log.d("555","发码空指针错误" );
                 }
                 if (code.equals("72")){
                     //发码失败
                     huqufama.getcodeinfofail();
-                }else {
+                }else
+                    {
                 String pattern = "\\{.*?\\}";             //正则匹配
                 Pattern r = Pattern.compile(pattern);
                 ArrayList<CodeinfoBean> list=new ArrayList<>();
@@ -62,7 +68,6 @@ public class Fama {
                     }
                 }
                 huqufama.getcodeinfosuccessful(list);
-                Log.d("555","获取已生成码信息"+result+list.size());
                 }
             }
         }

@@ -30,10 +30,16 @@ public class Home {
             if (what==1){
                 String result= (String) msg.obj;
                 Log.d("5555HomePage","返回数据"+result);
-                DbDataBasic dbDataBasic=gson.fromJson(result,DbDataBasic.class);
-                StaticValue.kezhuangmashu=dbDataBasic.getCodenum();
-                StaticValue.phone=dbDataBasic.getPhone();
-                homeresult.signsuccessful(dbDataBasic);
+                try {
+                    DbDataBasic dbDataBasic=gson.fromJson(result,DbDataBasic.class);
+                    StaticValue.kezhuangmashu=dbDataBasic.getCodenum();
+                    StaticValue.phone=dbDataBasic.getPhone();
+                    StaticValue.dbDataBasic=dbDataBasic;
+                    homeresult.signsuccessful(dbDataBasic);
+                }catch (JsonSyntaxException e){
+                    homeresult.gethomefail();
+                }
+
             }
             if (what==2){
                 String result= (String) msg.obj;
@@ -66,13 +72,20 @@ public class Home {
         network.connectnet(body,"getmubiao",StaticValue.url,handler,2);  //请求目标信息
     }
     public interface Homeresult
-    {
+    {   public void gethomefail();
         public void signsuccessful( DbDataBasic dbDataBasic);
         public void getmubiao(UsermubiaoBean usermubiaoBean);
         public void getlever(LowerMgr lowerMgr);
     }
+
     private  Homeresult homeresult;
     public void Sethomelistener( Homeresult homeresult){
         this.homeresult=homeresult;
+    }
+    public void getmubiao(String PHONE){
+        Signbean signbean=new Signbean("","","","999999",PHONE);
+        Gson gson=new Gson();
+        String body=gson.toJson(signbean);
+        network.connectnet(body,"getmubiao",StaticValue.url,handler,2);  //请求目标信息
     }
 }

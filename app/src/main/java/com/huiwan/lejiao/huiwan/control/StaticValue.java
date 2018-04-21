@@ -1,14 +1,14 @@
 package com.huiwan.lejiao.huiwan.control;
 
+import com.huiwan.lejiao.huiwan.DataBean.DbDataBasic;
+
 public class StaticValue {
- //   public static String url="http://47.98.155.149:8080/huiwanxueyuan/serverControl";
-    public static String url="http://192.168.2.110:8080/HttpControl//serverControl";
-    public static String uid;
+    public static String url="http://47.98.155.149:8080/huiwanxueyuan/serverControl";
+  //  public static String url="http://192.168.2.100:8080/HttpControl//serverControl";
     public static String name;
-    public static String lv;
     public static String phone;
     public static String jinrimubiao;
-    public static int jinrirenshu;
+    public static int jinrirenshu=0;
     //本月人数
     public static String benyuerenshu;
     //本月目标
@@ -20,4 +20,5 @@ public class StaticValue {
     public static String weixin;
     public static String yscm;
     public static int teamnum;
+    public static DbDataBasic dbDataBasic;
 }

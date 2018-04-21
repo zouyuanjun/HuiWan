@@ -61,7 +61,6 @@
                 android:layout_height="40dp"
                 android:background="@drawable/tool_ic_home_sel" />
         </LinearLayout>
-
         <LinearLayout
             android:layout_weight="1"
             android:orientation="vertical"

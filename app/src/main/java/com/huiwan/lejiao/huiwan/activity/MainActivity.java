@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -24,6 +25,7 @@ import com.huiwan.lejiao.huiwan.fragment.Studentpage;
 import com.huiwan.lejiao.huiwan.utils.GetSystemdate;
 import com.huiwan.lejiao.huiwan.viewadapter.ViewPagerAdapter;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView im_student;
     ImageView im_my;
     Context context;
-
+RecyclerView recyclerView;
     TextView tv_toobar_text;
     private ViewPager viewPager;
     Toolbar toolbar;
@@ -57,16 +59,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         initview();
-
     }
-
     private void  initview(){
         fragmentlist.add(new Homepage());
         fragmentlist.add(new Famapage());
         fragmentlist.add(new Studentpage());
         fragmentlist.add(new Livelypage());
         fragmentlist.add(new Myselfpage());
-
         viewPager=findViewById(R.id.viewpager);
         im_homepage=findViewById(R.id.im_homepage);
         im_provide=findViewById(R.id.im_provide);
@@ -102,7 +101,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_nor));
                         im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_nor));
                         im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_sel));
-
                         break;
                     case 2:
                         tv_toobar_text.setText("学员中心");
@@ -128,24 +126,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_nor));
                         im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_sel));
                         break;
-
                 }
             }
-
             @Override
             public void onPageSelected(int position) {
-
             }
-
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
         viewPagerAdapter.setpagelistener(new ViewPagerAdapter.Viewpageposition() {
             @Override
             public void sendposition(int position) {
-
             }
         });
     }
@@ -153,51 +145,65 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.im_homepage:
-                viewPager.setCurrentItem(0);
+                viewPager.setCurrentItem(0,false);
                 im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_sel));
                 im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_nor));
                 im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_nor));
                 im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_nor));
                 im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_nor));
-                tv_toobar_text.setText("首页");
+             //   tv_toobar_text.setText("首页");
 
                 break;
             case R.id.im_provide:
-                tv_toobar_text.setText("发码");
+              //  tv_toobar_text.setText("发码");
                 im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_nor));
                 im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_nor));
                 im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_nor));
                 im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_nor));
                 im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_sel));
-                viewPager.setCurrentItem(1);
+                viewPager.setCurrentItem(1,false);
 
                 break;
             case R.id.im_student:
-                tv_toobar_text.setText("学员中心");
+            //    tv_toobar_text.setText("学员中心");
                 im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_nor));
                 im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_nor));
                 im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_nor));
                 im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_nor));
                 im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_sel));
-                viewPager.setCurrentItem(2);
+                viewPager.setCurrentItem(2,false);
                 break;
             case R.id.im_lively:
-                tv_toobar_text.setText("活跃度");
+            //    tv_toobar_text.setText("活跃度");
                 im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_nor));
                 im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_nor));
                 im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_nor));
                 im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_nor));
                 im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_sel));
+                viewPager.setCurrentItem(3,false);
                 viewPager.setCurrentItem(3);
                 break;
             case R.id.im_my:
-                tv_toobar_text.setText("个人中心");
+             //   tv_toobar_text.setText("个人中心");
+//                try {
+//                    Field field = viewPager.getClass().getDeclaredField("mCurItem");//参数mCurItem是系统自带的
+//                    field.setAccessible(true);
+//                    field.setInt(viewPager,4);
+//                }catch (Exception e){
+//                    e.printStackTrace();
+//                }
+
+//然后调用下面的函数刷新数据
+                viewPagerAdapter.notifyDataSetChanged();
+//再调用setCurrentItem()函数设置一次
+              //  viewPager.setCurrentItem(4,false);
+                viewPager.setCurrentItem(4);
                 im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_nor));
                 im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_nor));
                 im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_nor));
                 im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_nor));
                 im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_sel));
-                viewPager.setCurrentItem(4);
+         //       viewPager.setCurrentItem(4);
                 break;
 
         }

@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,12 +36,13 @@ public class Livelypage extends Fragment {
     TextView tv_teamnum;
     TextView tv_jrrenshu;
 
-
     private LineChartView lineChart;
     List<Chardata> list=new ArrayList<>();
     private List<PointValue> mPointValues = new ArrayList<PointValue>();
     private List<AxisValue> mAxisXValues = new ArrayList<AxisValue>();
     View rootview;
+    LineChartData data;
+    boolean isVisible=false;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -54,25 +56,75 @@ public class Livelypage extends Fragment {
         getAxisPoints(list);
         getAxisPoints2(list2);
         getAxisXLables(list);
-        initLineChart();
+        Log.d("555","噜噜噜噜onCreateView");
         return rootview;
     }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (getUserVisibleHint()){
+            initLineChart();
+            prepareDataAnimation();
+            lineChart.startDataAnimation();
+            Log.d("555","啦啦啦啦getUserVisibleHint");
+         //   isVisible=true;
+        }
+    }
+    private void onVisible() {
+        if (isVisible){
+            Log.d("555","哈哈哈onVisible");
+
+        }
+    }
+    List<Integer> listf=new ArrayList<>();
+
+    private void prepareDataAnimation() {
+        int i=0;
+        for (Line line : data.getLines()) {
+            for (PointValue value : line.getValues()) {
+                i++;
+                // Here I modify target only for Y values but it is OK to modify X targets as well.
+                value.setTarget(value.getX(), (float)listf.get(i));
+            }
+        }
+    }
     List<Chardata> list2=new ArrayList<>();
-
-
     private List<PointValue> mPointValues2 = new ArrayList<PointValue>();
     public void setdata(){
         list.clear();
         list2.clear();
-        Chardata chartData=new Chardata("20","15");
+        listf.clear();
+        listf.add(55);
+        listf.add(45);
+        listf.add(35);
+        listf.add(45);
+        listf.add(55);
+        listf.add(65);
+        listf.add(55);
+        listf.add(25);
+        listf.add(55);
+        listf.add(45);
+        listf.add(55);
+        listf.add(65);
+        listf.add(55);
+        listf.add(25);
+        listf.add(45);
+        listf.add(35);
+        listf.add(25);
+        listf.add(55);
+        listf.add(35);
+        listf.add(45);
+        listf.add(45);
+        listf.add(45);
+        Chardata chartData=new Chardata("20","20");
         Chardata chartData1=new Chardata("21","20");
-        Chardata chartData2=new Chardata("22","15");
+        Chardata chartData2=new Chardata("22","20");
         Chardata chartData3=new Chardata("23","20");
-        Chardata chartData4=new Chardata("24","44");
-        Chardata chartData5=new Chardata("25","15");
-        Chardata chartData6=new Chardata("26","30");
-        Chardata chartData7=new Chardata("27","65");
-        Chardata chartData8=new Chardata("28","75");
+        Chardata chartData4=new Chardata("24","20");
+        Chardata chartData5=new Chardata("25","20");
+        Chardata chartData6=new Chardata("26","20");
+        Chardata chartData7=new Chardata("27","20");
+        Chardata chartData8=new Chardata("28","20");
         list.add(chartData);
         list.add(chartData1);
         list.add(chartData2);
@@ -113,7 +165,6 @@ public class Livelypage extends Fragment {
             mPointValues.add(new PointValue(i, point));
         }
     }
-
     private void getAxisPoints2(List<Chardata> list) {
         mPointValues2.clear();
         for (int i = 0; i < list.size(); i++) {
@@ -121,7 +172,6 @@ public class Livelypage extends Fragment {
             mPointValues2.add(new PointValue(i, point));
         }
     }
-
     private void initLineChart() {
         Line line = new Line(mPointValues).setColor(Color.parseColor("#FFe6dc"));  //折线的颜色（橙色）
         List<Line> lines = new ArrayList<Line>();
@@ -146,7 +196,7 @@ public class Livelypage extends Fragment {
 
         lines.add(line);
         lines.add(line2);
-        LineChartData data = new LineChartData();
+        data = new LineChartData();
         data.setLines(lines);
 
 
