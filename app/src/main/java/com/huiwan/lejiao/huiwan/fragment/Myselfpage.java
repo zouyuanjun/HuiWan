@@ -2,18 +2,30 @@ package com.huiwan.lejiao.huiwan.fragment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.huiwan.lejiao.huiwan.R;
 import com.huiwan.lejiao.huiwan.control.Setting_info;
 import com.huiwan.lejiao.huiwan.control.StaticValue;
@@ -45,7 +57,7 @@ public class Myselfpage extends Fragment {
     ImageView im_msg;
     ImageView im_shouyi;
     ImageView im_shiyongjiaocheng;
-
+    SimpleDraweeView im_photo;
     ImageButton imb_citypick;
     ImageButton imb_birdaypick;
     ImageButton imb_setting;
@@ -65,6 +77,20 @@ public class Myselfpage extends Fragment {
         im_msg=rootview.findViewById(R.id.im_meg_centen);
         im_shouyi=rootview.findViewById(R.id.im_shouyi);
         im_shiyongjiaocheng=rootview.findViewById(R.id.im_shiyongjiaochen);
+        im_photo=rootview.findViewById(R.id.im_centen_photo);
+        if (StaticValue.dbDataBasic.getSex()==1){
+            im_photo.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.men)).build());
+        } else if (StaticValue.dbDataBasic.getSex()==2){
+            im_photo.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.girl)).build());
+        } else {
+            im_photo.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.studmeg_ic_portrait)).build());
+        }
+        im_photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    selectphotopopwindows();
+            }
+        });
         setting_info=new Setting_info(activity);
         tv_city=rootview.findViewById(R.id.tv_city);
         tv_birday=rootview.findViewById(R.id.tv_birday);
@@ -174,4 +200,53 @@ public class Myselfpage extends Fragment {
         });
         return rootview;
     }
+    public void selectphotopopwindows(){
+        WindowManager.LayoutParams lp = activity.getWindow().getAttributes();
+        lp.alpha = 0.4f;
+        activity.getWindow().setAttributes(lp);
+        final PopupWindow window ;
+        View contentView = LayoutInflater.from(context).inflate(R.layout.pop_selectphoto, null, false);
+        SimpleDraweeView im_men=contentView.findViewById(R.id.img_select_girl);
+
+        SimpleDraweeView im_girl=contentView.findViewById(R.id.img_select_men);
+
+        window = new PopupWindow(contentView,  ViewGroup.LayoutParams.WRAP_CONTENT,  ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        // 设置PopupWindow的背景
+        im_men.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StaticValue.dbDataBasic.setSex(1);
+                setting_info.updatainfo(StaticValue.dbDataBasic);
+                im_photo.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.men)).build());
+                window.dismiss();
+            }
+        });
+        im_girl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StaticValue.dbDataBasic.setSex(2);
+                setting_info.updatainfo(StaticValue.dbDataBasic);
+                im_photo.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.girl)).build());
+                window.dismiss();
+            }
+        });
+        window.setBackgroundDrawable(new ColorDrawable(0xff2581ff));
+        // 设置PopupWindow是否能响应外部点击事件
+        window.setOutsideTouchable(true);
+        // 设置PopupWindow是否能响应点击事件
+        window.setTouchable(true);
+        window.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            //在dismiss中恢复透明度
+            public void onDismiss() {
+                WindowManager.LayoutParams lp = activity.getWindow().getAttributes();
+                lp.alpha = 1f;
+                activity.getWindow().setAttributes(lp);
+            }
+        });
+        window.showAtLocation(activity.getWindow().getDecorView(), Gravity.CENTER, 0, 0);
+    }
+
+
+
+
 }

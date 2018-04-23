@@ -163,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="11sp"
-                android:text="活跃度:20" />
+                android:text="活跃度:0" />
             <ImageView
                 android:layout_gravity="center_vertical"
                 android:background="@color/colorPrimary"
@@ -193,7 +193,7 @@
                 android:textSize="11sp"
                 android:text="新进人数" />
         </LinearLayout>
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <lecho.lib.hellocharts.view.LineChartView
@@ -203,6 +203,22 @@
                 android:layout_height="220dp"
                 android:layout_weight="1"
                 />
-        </LinearLayout>
+            <TextView
+                android:textColor="@color/heiseziti"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="70dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="活跃度功能正在加班制作中····"/>
+            <TextView
+                android:textColor="@color/heiseziti"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="89dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="请再给我们一点时间吧"/>
+        </RelativeLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

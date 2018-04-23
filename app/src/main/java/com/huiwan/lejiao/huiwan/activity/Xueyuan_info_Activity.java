@@ -90,7 +90,7 @@ public class Xueyuan_info_Activity extends AppCompatActivity {
             @Override
             public void getxiajilist(List<DbDataBasic> list) {
                 for (DbDataBasic dbDataBasic:list){
-                  PersonalinfoBean personalinfoBean=new PersonalinfoBean(dbDataBasic.getName(),dbDataBasic.getPhone(),dbDataBasic.getWeixin(),"",dbDataBasic.getCodenum());
+                  PersonalinfoBean personalinfoBean=new PersonalinfoBean(dbDataBasic.getName(),dbDataBasic.getPhone(),dbDataBasic.getWeixin(),String.valueOf(dbDataBasic.getSex()),dbDataBasic.getCodenum());
                     arraylist.add(personalinfoBean);
                 }
 

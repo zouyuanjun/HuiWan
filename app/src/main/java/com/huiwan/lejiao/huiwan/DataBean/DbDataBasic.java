@@ -13,6 +13,15 @@ public class DbDataBasic {
     private String exphone = "";         //上级手机号
     private int codenum = 0;		 //可生成注册码数量
     private String account = "";
+    private int sex=0;
+
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
 
     public int getCodenum() {
         return codenum;

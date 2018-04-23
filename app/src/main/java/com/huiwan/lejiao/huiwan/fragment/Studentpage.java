@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -99,7 +100,7 @@ public class Studentpage extends Fragment implements AdapterView.OnItemClickList
                 tv_noxueyuan.setVisibility(View.GONE);
                 arrayList.clear();
                     for (DbDataBasic dbDataBasic:list){
-                        PersonalinfoBean personalinfoBean=new PersonalinfoBean(dbDataBasic.getName(),dbDataBasic.getPhone(),dbDataBasic.getWeixin(),url,dbDataBasic.getCodenum());
+                        PersonalinfoBean personalinfoBean=new PersonalinfoBean(dbDataBasic.getName(),dbDataBasic.getPhone(),dbDataBasic.getWeixin(),String.valueOf(dbDataBasic.getSex()),dbDataBasic.getCodenum());
                         arrayList.add(personalinfoBean);
                     }
                 adapter.notifyDataSetChanged();
@@ -123,6 +124,21 @@ public class Studentpage extends Fragment implements AdapterView.OnItemClickList
                 tv_sjname.setText("姓名:"+dbDataBasic.getName());
                 tv_sjshouji.setText("手机:"+dbDataBasic.getPhone());
                 tv_sjweixin.setText("微信:"+dbDataBasic.getWeixin());
+                if (dbDataBasic.getPhone().equals("88888888888")){
+                    im_sjphoto.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.logo)).build());
+                }else {
+                    if (dbDataBasic.getSex()==1){
+                        im_sjphoto.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.men)).build());
+                    } else if (dbDataBasic.getSex()==2){
+                        im_sjphoto.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.girl)).build());
+                    } else {
+                        im_sjphoto.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.studmeg_ic_portrait)).build());
+                    }
+                }
+
+
+
+
             }
 
             @Override

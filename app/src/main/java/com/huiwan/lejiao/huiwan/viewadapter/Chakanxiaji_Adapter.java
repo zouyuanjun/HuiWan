@@ -56,8 +56,13 @@ public class Chakanxiaji_Adapter extends BaseAdapter {
         tv_shouji.setText("手机号："+arrayList.get(i).getPhonenum());
         tv_weixin.setText("微信号："+arrayList.get(i).getWeichat());
         tv_keyongma.setText("可用码数："+arrayList.get(i).getKeyongma()+"");
-        Uri uri = Uri.parse(arrayList.get(i).getPhotourl());
-        im_photo.setImageURI(uri);
+        if (arrayList.get(i).getPhotourl().equals("1")){
+            im_photo.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.men)).build());
+        } else if (arrayList.get(i).getPhotourl().equals("2")){
+            im_photo.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.girl)).build());
+        } else {
+            im_photo.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.studmeg_ic_portrait)).build());
+        }
         return itemview;
     }
 }
