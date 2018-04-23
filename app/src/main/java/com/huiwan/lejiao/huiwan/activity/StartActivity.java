@@ -29,7 +29,7 @@ public class StartActivity extends AppCompatActivity{
         setContentView(R.layout.activity_startactivity);
         Log.d("ddd","开始页面启动成功");
         activity=this;
-      // "1".substring(5);
+     //  "1".substring(5);
         SharedPreferences pref = getSharedPreferences("SPuser",MODE_PRIVATE);
         SharedPreferences pref2 = getSharedPreferences("ACCOUNT",MODE_PRIVATE);
         final String accountlist=pref2.getString("account","{\"ee\":{\"account\":\"ee\"}}");

@@ -34,9 +34,11 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+/*
+* 查看激活码信息类
+* */
 public class CheakcodeActivity extends AppCompatActivity  {
-    AutoCompleteTextView ed_search_code;
+    AutoCompleteTextView ed_search_code;    //激活码搜索
     ListView listView;
     ArrayList<CodeinfoBean> arrayList=new ArrayList<>();
     Codeinfo_Adapter adapter;
@@ -71,10 +73,14 @@ public class CheakcodeActivity extends AppCompatActivity  {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId== EditorInfo.IME_ACTION_SEARCH){
-                 arrayList.clear();
-                 String strcode=ed_search_code.getText().toString();
-                 arrayList.add(map.get(strcode));
-                 adapter.notifyDataSetChanged();
+                    if(ed_search_code.getText().toString().isEmpty()){
+                        Toast.makeText(activity,"请输入要搜索的激活码",Toast.LENGTH_SHORT);
+                    }else {
+                        arrayList.clear();
+                        String strcode=ed_search_code.getText().toString();
+                        arrayList.add(map.get(strcode));
+                        adapter.notifyDataSetChanged();
+                    }
                 }
                 return false;
             }
@@ -83,10 +89,15 @@ public class CheakcodeActivity extends AppCompatActivity  {
         imb_code_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayList.clear();
-                String strcode=ed_search_code.getText().toString();
-                arrayList.add(map.get(strcode));
-                adapter.notifyDataSetChanged();
+                if(ed_search_code.getText().toString().isEmpty()){
+                    Toast.makeText(activity,"请输入要搜索的激活码",Toast.LENGTH_SHORT);
+                }else {
+                    arrayList.clear();
+                    String strcode=ed_search_code.getText().toString();
+                    arrayList.add(map.get(strcode));
+                    adapter.notifyDataSetChanged();
+                }
+
             }
         });
         im_creat_sort=findViewById(R.id.im_codeucreatesort);
