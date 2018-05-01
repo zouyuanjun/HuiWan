@@ -29,14 +29,19 @@ public class Fama {
             int i=msg.what;
             if (i==1){
                 String result=msg.obj.toString();
-                JsonElement je = new JsonParser().parse(result);
-                String code = je.getAsJsonObject().get("result").getAsString();
-                if (code.equals("62")){
-                    //发码失败
+                try {
+                    JsonElement je = new JsonParser().parse(result);
+                    String code = je.getAsJsonObject().get("result").getAsString();
+                    if (code.equals("62")){
+                        //发码失败
+                        huqufama.fail("0");
+                    } else {
+                        huqufama.huqufamasuccessful(code);
+                    }
+                }catch (JsonSyntaxException e){
                     huqufama.fail("0");
-                } else {
-                    huqufama.huqufamasuccessful(code);
                 }
+
             }
             if (i==2){
                 String result= (String) msg.obj;

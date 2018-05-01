@@ -27,7 +27,6 @@ public class Chakanxiaji_Adapter extends BaseAdapter {
     public Chakanxiaji_Adapter(ArrayList<PersonalinfoBean> arrayList) {
         this.arrayList = arrayList;
     }
-
     @Override
     public int getCount() {
         return arrayList.size();

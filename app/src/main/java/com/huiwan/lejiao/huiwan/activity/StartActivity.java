@@ -46,6 +46,9 @@ public class StartActivity extends AppCompatActivity{
                     sign_in.setsignlistener(new Sign_in.Signresult() {
                         @Override
                         public void signsuccessful() {
+
+                            Intent intent = new Intent(activity, MainActivity.class);
+                            activity.startActivity(intent);
                             finish();
                         }
                         //登陆失败弹窗提示

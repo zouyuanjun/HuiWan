@@ -84,9 +84,6 @@ public class Sign_in {
            }catch (JsonSyntaxException e){
                signresult.signfail("fail");
            }
-
-            Intent intent = new Intent(activity, MainActivity.class);
-            activity.startActivity(intent);
             signresult.signsuccessful();
             keepdata();
         }else {

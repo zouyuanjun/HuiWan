@@ -1,6 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            v1SigningEnabled false
+            v2SigningEnabled false
+            keyAlias 'lejiaokeji'
+            keyPassword 'lejiaokejiandroid'
+            storeFile file('D:/Android/lejiaokejisign.jks')
+            storePassword 'lejiaokejiandroid'
+        }
+    }
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.huiwan.lejiao.huiwan"
@@ -14,6 +24,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 }
@@ -31,11 +42,10 @@ dependencies {
     implementation 'org.jsoup:jsoup:1.11.2'
     implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
     implementation 'org.litepal.android:core:1.6.1'
-    implementation'com.facebook.fresco:fresco:1.7.1'
+    implementation 'com.facebook.fresco:fresco:1.7.1'
     implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
     implementation 'liji.library.dev:citypickerview:3.1.6'
     implementation 'com.feezu.liuli:timeselector:1.1.3+'
     //implementation 'ch.acra:acra-core:5.1.3'2
     compile 'ch.acra:acra:4.9.0'
-
 }

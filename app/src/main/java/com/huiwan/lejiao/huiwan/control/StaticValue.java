@@ -3,8 +3,9 @@ package com.huiwan.lejiao.huiwan.control;
 import com.huiwan.lejiao.huiwan.DataBean.DbDataBasic;
 
 public class StaticValue {
-  //  public static String url="http://47.98.155.149:8080/huiwanxueyuan/serverControl";
-    public static String url="http://192.168.2.101:8080/HttpControl//serverControl";
+   public static String url="http://47.98.155.149:8080/huiwanxueyuan/serverControl";
+
+  //public static String url="http://192.168.2.109:8080/huiwanxueyuan//serverControl";
     public static String name;
     public static String phone;
     public static String jinrimubiao;

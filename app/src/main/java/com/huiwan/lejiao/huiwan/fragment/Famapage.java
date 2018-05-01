@@ -164,7 +164,8 @@ public class Famapage extends Fragment {
             }
             @Override
             public void fail(String str) {
-
+                AlertDialog dialog = GetAlerDialog.getdialog(activity,"激活失败","抱歉，连接失败，请再试一次");
+                dialog.show();
             }
         });
 

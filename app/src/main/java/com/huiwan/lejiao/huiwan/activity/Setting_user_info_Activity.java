@@ -133,7 +133,7 @@ public class Setting_user_info_Activity extends AppCompatActivity {
         StaticValue.name=name;
         StaticValue.weixin=wechat;
         DbDataBasic setting_info_bean=new DbDataBasic();
-        if (name.isEmpty()||phonenum.isEmpty()||idcard.isEmpty()||wechat.isEmpty()||taobao.isEmpty()||sjphonenum.isEmpty()){
+        if (name.isEmpty()||phonenum.isEmpty()||idcard.isEmpty()||wechat.isEmpty()||sjphonenum.isEmpty()){
             AlertDialog dialog = GetAlerDialog.getdialog(activity,"提交失败","请填写所有信息再提交");
             dialog.show();
         }else {

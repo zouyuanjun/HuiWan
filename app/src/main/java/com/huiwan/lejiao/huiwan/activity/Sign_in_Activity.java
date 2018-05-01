@@ -2,6 +2,7 @@ package com.huiwan.lejiao.huiwan.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -113,6 +114,7 @@ public class Sign_in_Activity extends AppCompatActivity {
         sign_in.setsignlistener(new Sign_in.Signresult() {
             @Override
             public void signsuccessful() {
+
                 //将账号保存再本地
                 AccountBean accountBean=new AccountBean(username);
                 accountBeanMap.put(username,accountBean);
@@ -121,6 +123,9 @@ public class Sign_in_Activity extends AppCompatActivity {
                 SharedPreferences.Editor editor=pref2.edit();
                 editor.putString("account",accountlist);
                 editor.commit();
+
+                Intent intent = new Intent(activity, MainActivity.class);
+                activity.startActivity(intent);
                 finish();
             }
             //登陆失败弹窗提示
