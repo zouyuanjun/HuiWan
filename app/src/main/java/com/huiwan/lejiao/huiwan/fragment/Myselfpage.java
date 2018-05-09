@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -51,6 +52,11 @@ public class Myselfpage extends Fragment {
     TextView tv_user_centen_phone;
     TextView tv_user_centen_weixin;
     TextView tv_setting;
+    TextView tv_xiaoshengyi;
+    TextView tv_huiwan;
+    TextView tv_lijimai;
+    TextView tv_appmgr;
+    TextView tv_accountcentent;
     String citysrt;
     TextView tv_city;
     TextView tv_birday;
@@ -78,11 +84,15 @@ public class Myselfpage extends Fragment {
         im_shouyi=rootview.findViewById(R.id.im_shouyi);
         im_shiyongjiaocheng=rootview.findViewById(R.id.im_shiyongjiaochen);
         im_photo=rootview.findViewById(R.id.im_centen_photo);
-        if (StaticValue.dbDataBasic.getSex()==1){
-            im_photo.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.men)).build());
-        } else if (StaticValue.dbDataBasic.getSex()==2){
-            im_photo.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.girl)).build());
-        } else {
+        try {
+            if (StaticValue.dbDataBasic.getSex()==1){
+                im_photo.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.men)).build());
+            } else if (StaticValue.dbDataBasic.getSex()==2){
+                im_photo.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.girl)).build());
+            } else {
+                im_photo.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.studmeg_ic_portrait)).build());
+            }
+        }catch (NullPointerException e){
             im_photo.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.studmeg_ic_portrait)).build());
         }
         im_photo.setOnClickListener(new View.OnClickListener() {
@@ -194,8 +204,52 @@ public class Myselfpage extends Fragment {
         im_shiyongjiaocheng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog dialog = GetAlerDialog.getdialog(activity,"敬请期待","程序猿小哥哥正在加班开发···");
-                dialog.show();
+                Uri uri = Uri.parse("http://47.98.155.149:8080/WebDemo");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+        tv_accountcentent=rootview.findViewById(R.id.tv_accountcentent);
+        tv_accountcentent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Accountpopwindows();
+            }
+        });
+        tv_appmgr=rootview.findViewById(R.id.tv_APPMgr);
+        tv_xiaoshengyi=rootview.findViewById(R.id.tv_xiaoshengyi);
+        tv_lijimai=rootview.findViewById(R.id.tv_lijimai);
+        tv_huiwan=rootview.findViewById(R.id.tv_huiwan);
+        tv_huiwan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("http://www.fir.im/zjhuiwan");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+        tv_appmgr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("http://app.yuncaifx.com/shareapp/#/login/2oeGyzY6");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+        tv_xiaoshengyi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://cc.yuncai12.top/mobile/index.php?m=wap&c=Invite&a=qrt&sign=49237e4884fb8eb235379505e27143fc");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+        tv_lijimai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("http://a.app.qq.com/o/simple.jsp?pkgname=com.hwlijimai");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
             }
         });
         return rootview;
@@ -245,8 +299,34 @@ public class Myselfpage extends Fragment {
         });
         window.showAtLocation(activity.getWindow().getDecorView(), Gravity.CENTER, 0, 0);
     }
-
-
-
-
+    public void Accountpopwindows(){
+        final PopupWindow window;
+        WindowManager.LayoutParams lp = activity.getWindow().getAttributes();
+        lp.alpha = 0.4f;
+        activity.getWindow().setAttributes(lp);
+        View contentView = LayoutInflater.from(activity).inflate(R.layout.popwindows_accountcentent, null, false);
+        window = new PopupWindow(contentView,  ViewGroup.LayoutParams.WRAP_CONTENT,  ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        // 设置PopupWindow的背景
+        window.setBackgroundDrawable(new ColorDrawable(0xff2581ff));
+        // 设置PopupWindow是否能响应外部点击事件
+        window.setOutsideTouchable(false);
+        // 设置PopupWindow是否能响应点击事件
+        window.setTouchable(true);
+        window.setFocusable(false); // 获取焦点
+        Button button=contentView.findViewById(R.id.bt_getcode);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                window.dismiss();
+                WindowManager.LayoutParams lp = activity.getWindow().getAttributes();
+                lp.alpha = 1f;
+                activity.getWindow().setAttributes(lp);
+            }
+        });
+        TextView tv_account=contentView.findViewById(R.id.tv_popAccount);
+        tv_account.setText("账号"+StaticValue.Account);
+        TextView tv_password=contentView.findViewById(R.id.tv_popPASSWORD);
+        tv_password.setText("密码："+StaticValue.PASSWORD);
+        window.showAtLocation(activity.getWindow().getDecorView(), Gravity.CENTER, 0, 0);
+    }
 }

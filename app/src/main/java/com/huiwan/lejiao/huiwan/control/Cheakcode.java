@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 import com.huiwan.lejiao.huiwan.DataBean.CodeinfoBean;
 import com.huiwan.lejiao.huiwan.DataBean.DbDataBasic;
 import com.huiwan.lejiao.huiwan.DataBean.Signbean;
-import com.huiwan.lejiao.huiwan.utils.Network;
+import com.lejiaokeji.fentuan.util.Network;
 
 import java.util.ArrayList;
 import java.util.List;

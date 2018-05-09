@@ -11,7 +11,7 @@ import com.google.gson.JsonSyntaxException;
 import com.huiwan.lejiao.huiwan.DataBean.ChangemaBean;
 import com.huiwan.lejiao.huiwan.DataBean.DbDataBasic;
 import com.huiwan.lejiao.huiwan.DataBean.Signbean;
-import com.huiwan.lejiao.huiwan.utils.Network;
+import com.lejiaokeji.fentuan.util.Network;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -97,14 +97,45 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
+            android:layout_height="40dp"
             android:orientation="horizontal">
             <TextView
+                android:gravity="center_vertical"
+                android:layout_height="40dp"
+                android:id="@+id/tv_accountcentent"
                 android:textColor="@color/heiseziti"
                 android:textSize="13sp"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="惠玩密码中心"/>
+            <ImageButton
+                android:id="@+id/imb_citypick1"
+                android:layout_gravity="center_vertical"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/pfile_ic_arrow"/>
+        </LinearLayout>
+        <LinearLayout
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/fengexian">
+        </LinearLayout>
+        <LinearLayout
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+            <TextView
+                android:gravity="center_vertical"
+                android:layout_height="40dp"
+                android:textColor="@color/heiseziti"
+                android:textSize="13sp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
                 android:text="地区"/>
             <TextView
                 android:id="@+id/tv_city"
@@ -124,17 +155,25 @@
                 android:background="@drawable/pfile_ic_arrow"/>
         </LinearLayout>
         <LinearLayout
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/fengexian">
+        </LinearLayout>
+        <LinearLayout
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
+            android:layout_height="40dp"
             android:orientation="horizontal">
             <TextView
+                android:gravity="center_vertical"
+                android:layout_height="40dp"
                 android:textSize="13sp"
                 android:layout_gravity="center_vertical"
                 android:textColor="@color/heiseziti"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="出生日期"/>
             <TextView
                 android:id="@+id/tv_birday"
@@ -154,10 +193,136 @@
                 android:background="@drawable/pfile_ic_arrow"/>
         </LinearLayout>
         <LinearLayout
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/fengexian">
+        </LinearLayout>
+        <LinearLayout
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+            <TextView
+                android:gravity="center_vertical"
+                android:layout_height="40dp"
+                android:id="@+id/tv_APPMgr"
+                android:textColor="@color/heiseziti"
+                android:textSize="13sp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+
+                android:text="APP后台管理"
+                android:layout_weight="1"/>
+            <ImageButton
+                android:layout_gravity="center_vertical"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/pfile_ic_arrow"/>
+        </LinearLayout>
+        <LinearLayout
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/fengexian">
+        </LinearLayout>
+        <LinearLayout
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+            <TextView
+                android:gravity="center_vertical"
+                android:layout_height="40dp"
+                android:id="@+id/tv_huiwan"
+                android:textColor="@color/heiseziti"
+                android:textSize="13sp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:text="惠玩下载"
+                android:layout_weight="1"/>
+            <ImageButton
+                android:layout_gravity="center_vertical"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/pfile_ic_arrow"/>
+        </LinearLayout>
+        <LinearLayout
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/fengexian">
+        </LinearLayout>
+        <LinearLayout
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+            <TextView
+                android:gravity="center_vertical"
+                android:layout_height="40dp"
+                android:id="@+id/tv_lijimai"
+                android:textColor="@color/heiseziti"
+                android:textSize="13sp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:text="立即买下载"
+                android:layout_weight="1"/>
+            <ImageButton
+                android:layout_gravity="center_vertical"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/pfile_ic_arrow"/>
+        </LinearLayout>
+        <LinearLayout
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/fengexian">
+        </LinearLayout>
+        <LinearLayout
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+            <TextView
+                android:gravity="center_vertical"
+                android:layout_height="40dp"
+                android:id="@+id/tv_xiaoshengyi"
+                android:textColor="@color/heiseziti"
+                android:textSize="13sp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:text="小生意下载"
+                android:layout_weight="1"/>
+            <ImageButton
+                android:layout_gravity="center_vertical"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/pfile_ic_arrow"/>
+        </LinearLayout>
+        <LinearLayout
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/fengexian">
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
         </LinearLayout>
+
         <LinearLayout
             android:background="@color/colorPrimaryDark"
             android:divider="@color/colorPrimary"
@@ -177,6 +342,7 @@
                 android:layout_weight="1"
                 android:text="退出登陆"/>
         </LinearLayout>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

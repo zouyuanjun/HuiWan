@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
@@ -15,12 +14,12 @@ import com.huiwan.lejiao.huiwan.DataBean.Signbean;
 import com.huiwan.lejiao.huiwan.activity.MainActivity;
 import com.huiwan.lejiao.huiwan.activity.Setting_user_info_Activity;
 import com.huiwan.lejiao.huiwan.activity.Sign_in_Activity;
-import com.huiwan.lejiao.huiwan.utils.Network;
+
 
 public class Setting_info {
     Activity activity;
     String result;
-    Network network;
+    com.lejiaokeji.fentuan.util.Network network;
     Gson gson;
     Handler handler=new Handler() {
         @Override
@@ -65,7 +64,7 @@ public class Setting_info {
 
     public Setting_info(Activity activity) {
         this.activity=activity;
-            network=Network.getnetwork();
+            network= com.lejiaokeji.fentuan.util.Network.getnetwork();
             gson=new Gson();
         // String body="{\"address\":\"\",\"birthdate\":\"\",\"bymubiao\":\"\",\"byrenshu\":\"\",\"exname\":\"\",\"exphone\":\"18702508050\",\"exweixin\":\"\",\"idcard\":\"123456987\",\"jrmubiao\":\"\",\"jrrenshu\":\"\",\"lever\":\"\",\"name\":\"zouyuanjun\",\"phone\":\"18702508050\",\"taobao\":\"taobao\",\"userid\":\"999999\",\"weixin\":\"weinxin \"}";
 

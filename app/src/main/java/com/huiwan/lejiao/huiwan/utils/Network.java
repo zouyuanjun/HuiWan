@@ -1,12 +1,7 @@
-package com.huiwan.lejiao.huiwan.utils;
+package com.lejiaokeji.fentuan.util;
 
-import android.app.Notification;
 import android.os.Message;
-import android.preference.PreferenceActivity;
 import android.util.Log;
-
-import com.huiwan.lejiao.huiwan.control.StaticValue;
-
 import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;

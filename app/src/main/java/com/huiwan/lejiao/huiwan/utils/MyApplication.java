@@ -19,6 +19,8 @@ import org.acra.ACRA;
 import org.acra.sender.HttpSender;
 import org.acra.sender.ReportSenderFactory;
 
+import cn.jpush.android.api.JPushInterface;
+
 
 //@ReportsCrashes(
 //        formUri = "http://192.168.2.111:8080/HttpControl//ACRAServlet",
@@ -72,5 +74,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
     }
 }

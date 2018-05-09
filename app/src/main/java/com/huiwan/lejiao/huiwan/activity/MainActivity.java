@@ -1,9 +1,12 @@
 package com.huiwan.lejiao.huiwan.activity;
 
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -22,7 +25,6 @@ import com.huiwan.lejiao.huiwan.fragment.Livelypage;
 import com.huiwan.lejiao.huiwan.fragment.Myselfpage;
 import com.huiwan.lejiao.huiwan.fragment.Famapage;
 import com.huiwan.lejiao.huiwan.fragment.Studentpage;
-import com.huiwan.lejiao.huiwan.utils.GetSystemdate;
 import com.huiwan.lejiao.huiwan.viewadapter.ViewPagerAdapter;
 
 import java.lang.reflect.Field;
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView im_student;
     ImageView im_my;
     Context context;
-RecyclerView recyclerView;
+    RecyclerView recyclerView;
     TextView tv_toobar_text;
     private ViewPager viewPager;
     Toolbar toolbar;
@@ -52,7 +54,7 @@ RecyclerView recyclerView;
         super.onCreate(savedInstanceState);
         Fresco.initialize(this.getApplicationContext());
         //requestWindowFeature(Window.FEATURE_NO_TITLE);      // 隐藏标题
-        Log.d("555", "Ma"+ GetSystemdate.getsysdata().datastring());
+        Log.d("555", "Ma"+ com.lejiaokeji.fentuan.util.GetSystemdate.getsysdata().datastring());
         setContentView(R.layout.activity_main);
         context=this;
         toolbar =findViewById(R.id.toolbar);
@@ -87,44 +89,44 @@ RecyclerView recyclerView;
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 switch (position){
                     case 0:
-                        im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_sel));
-                        im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_nor));
-                        im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_nor));
-                        im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_nor));
-                        im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_nor));
+                        im_homepage.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_home_sel));
+                        im_provide.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_code_nor));
+                        im_student.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_stud_nor));
+                        im_my.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_user_nor));
+                        im_lively.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_activ_nor));
                         tv_toobar_text.setText("首页");
                         break;
                     case 1:
                         tv_toobar_text.setText("发码");
-                        im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_nor));
-                        im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_nor));
-                        im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_nor));
-                        im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_nor));
-                        im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_sel));
+                        im_homepage.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_home_nor));
+                        im_provide.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_code_sel));
+                        im_student.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_stud_nor));
+                        im_my.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_user_nor));
+                        im_lively.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_activ_nor));
                         break;
                     case 2:
                         tv_toobar_text.setText("学员中心");
-                        im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_nor));
-                        im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_nor));
-                        im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_nor));
-                        im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_nor));
-                        im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_sel));
+                        im_homepage.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_home_nor));
+                        im_provide.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_code_nor));
+                        im_student.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_stud_sel));
+                        im_my.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_user_nor));
+                        im_lively.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_activ_nor));
                         break;
                     case 3:
                         tv_toobar_text.setText("活跃度");
-                        im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_nor));
-                        im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_nor));
-                        im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_nor));
-                        im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_nor));
-                        im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_sel));
+                        im_homepage.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_home_nor));
+                        im_provide.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_code_nor));
+                        im_student.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_stud_nor));
+                        im_my.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_user_nor));
+                        im_lively.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_activ_sel));
                         break;
                     case 4:
                         tv_toobar_text.setText("个人中心");
-                        im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_nor));
-                        im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_nor));
-                        im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_nor));
-                        im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_nor));
-                        im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_sel));
+                        im_homepage.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_home_nor));
+                        im_provide.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_code_nor));
+                        im_student.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_stud_nor));
+                        im_my.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_user_sel));
+                        im_lively.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_activ_nor));
                         break;
                 }
             }
@@ -146,40 +148,41 @@ RecyclerView recyclerView;
         switch (view.getId()){
             case R.id.im_homepage:
                 viewPager.setCurrentItem(0,false);
-                im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_sel));
-                im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_nor));
-                im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_nor));
-                im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_nor));
-                im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_nor));
+                im_homepage.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_home_sel));
+                im_provide.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_code_nor));
+                im_student.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_stud_nor));
+                im_my.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_user_nor));
+                im_lively.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_activ_nor));
              //   tv_toobar_text.setText("首页");
 
                 break;
             case R.id.im_provide:
               //  tv_toobar_text.setText("发码");
-                im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_nor));
-                im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_nor));
-                im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_nor));
-                im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_nor));
-                im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_sel));
+                im_homepage.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_home_nor));
+                im_provide.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_code_sel));
+                im_student.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_stud_nor));
+                im_my.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_user_nor));
+                im_lively.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_activ_nor));
                 viewPager.setCurrentItem(1,false);
 
                 break;
             case R.id.im_student:
             //    tv_toobar_text.setText("学员中心");
-                im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_nor));
-                im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_nor));
-                im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_nor));
-                im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_nor));
-                im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_sel));
+                im_homepage.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_home_nor));
+                im_provide.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_code_nor));
+                im_student.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_stud_sel));
+                im_my.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_user_nor));
+                im_lively.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_activ_nor));
                 viewPager.setCurrentItem(2,false);
                 break;
             case R.id.im_lively:
             //    tv_toobar_text.setText("活跃度");
-                im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_nor));
-                im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_nor));
-                im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_nor));
-                im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_nor));
-                im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_sel));
+
+                im_homepage.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_home_nor));
+                im_provide.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_code_nor));
+                im_student.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_stud_nor));
+                im_my.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_user_nor));
+                im_lively.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_activ_sel));
                 viewPager.setCurrentItem(3,false);
                 viewPager.setCurrentItem(3);
                 break;
@@ -198,11 +201,11 @@ RecyclerView recyclerView;
 //再调用setCurrentItem()函数设置一次
               //  viewPager.setCurrentItem(4,false);
                 viewPager.setCurrentItem(4);
-                im_homepage.setBackground(context.getDrawable(R.drawable.tool_ic_home_nor));
-                im_provide.setBackground(context.getDrawable(R.drawable.tool_ic_code_nor));
-                im_student.setBackground(context.getDrawable(R.drawable.tool_ic_stud_nor));
-                im_lively.setBackground(context.getDrawable(R.drawable.tool_ic_activ_nor));
-                im_my.setBackground(context.getDrawable(R.drawable.tool_ic_user_sel));
+                im_homepage.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_home_nor));
+                im_provide.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_code_nor));
+                im_student.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_stud_nor));
+                im_my.setBackground(ContextCompat.getDrawable(context,R.drawable.tool_ic_user_sel));
+                im_lively.setBackground( ContextCompat.getDrawable(context,R.drawable.tool_ic_activ_nor));
          //       viewPager.setCurrentItem(4);
                 break;
 

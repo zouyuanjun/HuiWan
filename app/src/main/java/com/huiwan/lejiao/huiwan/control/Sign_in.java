@@ -18,7 +18,7 @@ import com.huiwan.lejiao.huiwan.activity.MainActivity;
 import com.huiwan.lejiao.huiwan.activity.Setting_user_info_Activity;
 import com.huiwan.lejiao.huiwan.activity.Sign_in_Activity;
 
-import com.huiwan.lejiao.huiwan.utils.Network;
+
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -30,10 +30,10 @@ import java.net.URLDecoder;
 public class Sign_in {
     String username;
     String password;
-    Network network;
+    com.lejiaokeji.fentuan.util.Network network;
     Activity activity;
     public Sign_in(String username, String password,Activity activity) {
-        network=Network.getnetwork();
+        network= com.lejiaokeji.fentuan.util.Network.getnetwork();
         this.activity=activity;
         this.username = username;
         this.password = password;
@@ -60,6 +60,8 @@ public class Sign_in {
     public interface Signresult{
         public void signsuccessful();
         public void signfail(String t);
+        public void fistlogin();
+        public void severerr();
     }
     private  Signresult signresult;
     public void setsignlistener( Signresult signresult1){
@@ -82,7 +84,7 @@ public class Sign_in {
                StaticValue.weixin=dbDataBasic.getWeixin();
                StaticValue.dbDataBasic=dbDataBasic;
            }catch (JsonSyntaxException e){
-               signresult.signfail("fail");
+               signresult.severerr();
            }
             signresult.signsuccessful();
             keepdata();
@@ -97,7 +99,7 @@ public class Sign_in {
             if (code.equals("11")) {
                 Intent intent = new Intent(activity, Setting_user_info_Activity.class);
                 activity.startActivity(intent);
-                signresult.signsuccessful();
+                signresult.fistlogin();
                 keepdata();
 
             }  else if (code.equals("12")) {
@@ -114,6 +116,8 @@ public class Sign_in {
         editor.putString("name",username);
         editor.putString("password",password);
         editor.commit();
+        StaticValue.Account=username;
+        StaticValue.PASSWORD=password;
 
     }
 

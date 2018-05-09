@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
@@ -39,7 +40,7 @@ public class Sign_in_Activity extends AppCompatActivity {
     AutoCompleteTextView ed_username;
     EditText ed_password;
     Button bt_signin;
-    TextView tv_forgetpassage;
+    TextView tv_sign_up;
     Gson gson;
     List<String> straccount=new ArrayList<>();
     Map<String,AccountBean> accountBeanMap =new HashMap<>();
@@ -95,7 +96,15 @@ public class Sign_in_Activity extends AppCompatActivity {
             }
         });
         bt_signin=findViewById(R.id.bt_signin);
-        tv_forgetpassage=findViewById(R.id.tv_forget_password);
+        tv_sign_up=findViewById(R.id.tv_sign_up);
+        tv_sign_up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("http://app.yuncaifx.com/shareapp/#/register/2oeGyzY6");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
         bt_signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,7 +115,6 @@ public class Sign_in_Activity extends AppCompatActivity {
     private void getdate(){
        // username="15070078339";
         username=ed_username.getText().toString();
-        StaticValue.Account=username;
         //password="147258";
         password=ed_password.getText().toString();
         Sign_in sign_in=new Sign_in(username,password,activity);
@@ -133,6 +141,17 @@ public class Sign_in_Activity extends AppCompatActivity {
             public void signfail(String t) {
 
                 AlertDialog dialog = GetAlerDialog.getdialog(activity,"登陆失败","账号或密码错误，请重新输入");
+                dialog.show();
+            }
+
+            @Override
+            public void fistlogin() {
+                finish();
+            }
+
+            @Override
+            public void severerr() {
+                AlertDialog dialog = GetAlerDialog.getdialog(activity,"登陆失败","服务器内部错误，请联系管理员");
                 dialog.show();
             }
         });

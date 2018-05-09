@@ -57,15 +57,16 @@ public class Livelypage extends Fragment {
         getAxisPoints2(list2);
         getAxisXLables(list);
         Log.d("555","噜噜噜噜onCreateView");
+        initLineChart();
+        prepareDataAnimation();
+        lineChart.startDataAnimation();
         return rootview;
     }
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (getUserVisibleHint()){
-            initLineChart();
-            prepareDataAnimation();
-            lineChart.startDataAnimation();
+
             Log.d("555","啦啦啦啦getUserVisibleHint");
          //   isVisible=true;
         }

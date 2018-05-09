@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -108,15 +109,15 @@ public class Studentpage extends Fragment implements AdapterView.OnItemClickList
             @Override
             public void getshangjiinfo(DbDataBasic dbDataBasic) {
                 if (dbDataBasic.getLever()==1){
-                    im_sjduanwei.setBackground(getActivity().getDrawable(R.drawable.stud_ic_lv1));
+                    im_sjduanwei.setBackground( ContextCompat.getDrawable(activity,R.drawable.stud_ic_lv1));
                 }else if (dbDataBasic.getLever()==2){
-                    im_sjduanwei.setBackground(getActivity().getDrawable(R.drawable.stud_ic_lv2));
+                    im_sjduanwei.setBackground( ContextCompat.getDrawable(activity,R.drawable.stud_ic_lv2));
                 }else if (dbDataBasic.getLever()==3){
-                    im_sjduanwei.setBackground(getActivity().getDrawable(R.drawable.stud_ic_lv3));
+                    im_sjduanwei.setBackground( ContextCompat.getDrawable(activity,R.drawable.stud_ic_lv3));
                 }else if (dbDataBasic.getLever()==4){
-                    im_sjduanwei.setBackground(getActivity().getDrawable(R.drawable.stud_ic_lv4));
+                    im_sjduanwei.setBackground( ContextCompat.getDrawable(activity,R.drawable.stud_ic_lv4));
                 }else if (dbDataBasic.getLever()==5){
-                    im_sjduanwei.setBackground(getActivity().getDrawable(R.drawable.stud_ic_lv5));
+                    im_sjduanwei.setBackground( ContextCompat.getDrawable(activity,R.drawable.stud_ic_lv5));
                 }else if (dbDataBasic.getLever()==0){
 
                 }

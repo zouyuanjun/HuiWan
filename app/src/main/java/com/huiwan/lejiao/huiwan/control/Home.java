@@ -11,7 +11,7 @@ import com.huiwan.lejiao.huiwan.DataBean.DbDataBasic;
 import com.huiwan.lejiao.huiwan.DataBean.LowerMgr;
 import com.huiwan.lejiao.huiwan.DataBean.Signbean;
 import com.huiwan.lejiao.huiwan.DataBean.UsermubiaoBean;
-import com.huiwan.lejiao.huiwan.utils.Network;
+import com.lejiaokeji.fentuan.util.Network;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 //homepage页面控制类
 public class Home {
     Gson gson;
-    Network network;
+    com.lejiaokeji.fentuan.util.Network network;
     Handler handler=new Handler() {
         @Override
         public void handleMessage(Message msg) {

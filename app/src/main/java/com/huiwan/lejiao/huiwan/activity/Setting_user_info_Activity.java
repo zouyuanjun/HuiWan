@@ -72,7 +72,7 @@ public class Setting_user_info_Activity extends AppCompatActivity {
                 bt_querbangding.setBackground(activity.getDrawable(R.drawable.list_bt_search_nor));
                 tv_sjname.setText("");
                 tv_sjwechat.setText("");
-                AlertDialog dialog = GetAlerDialog.getdialog(activity,"系统数据异常","请退出重新登陆或重装软件");
+                AlertDialog dialog = GetAlerDialog.getdialog(activity,"服务器数据异常","服务器正在调试，您可以稍等一会再使用");
                 dialog.show();
             }
 

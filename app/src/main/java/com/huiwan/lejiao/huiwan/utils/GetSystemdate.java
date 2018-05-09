@@ -1,4 +1,4 @@
-package com.huiwan.lejiao.huiwan.utils;
+package com.lejiaokeji.fentuan.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
